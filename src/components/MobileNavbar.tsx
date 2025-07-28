@@ -45,7 +45,7 @@ const MobileNavbar = () => {
             {isSignedIn ? (
               <>
                 <Button variant='ghost' className='flex items-center gap-3 justify-start' asChild>
-                  <Link href='/notificaations'>
+                  <Link href='/notifications'>
                     <BellIcon className='w-4 h-4' />
                     Notifications
                   </Link>
