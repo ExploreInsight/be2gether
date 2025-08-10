@@ -24,6 +24,7 @@ export default async function Home() {
        </div>
 
       <div className="hidden lg:block lg:col-span-4 sticky top-20">
+       {/* {user ? <SuggestedUser /> : null} */}
        <SuggestedUser />
       </div>
     </div>
