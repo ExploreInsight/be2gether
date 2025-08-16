@@ -9,6 +9,7 @@ import { Button } from "./ui/button";
 import { ImageIcon, Loader2Icon, SendIcon } from "lucide-react";
 import toast from "react-hot-toast";
 import { createPost } from "@/actions/post.action";
+import ImageUpload from "./ImageUpload";
 
 function CreatePost() {
   const {user} = useUser();
@@ -27,7 +28,7 @@ function CreatePost() {
         // reset form
         setContent('');
         setImageUrl('');
-        setIsPosting(false);
+        setShowImageUpload(false);
 
         toast.success("Post created successfully!");
       }
@@ -57,8 +58,14 @@ return (
           />
         </div>
         {(showImageUpload || imageUrl) && (
-          <div className="border rounded-lg">
-            {/* <ImageUpload */} ImageUplaod
+          <div className="border rounded-lg p-4">
+           <ImageUpload
+           endpoint="postImage"
+           value={imageUrl}
+           onChange={(url)=> {
+              setImageUrl(url);
+              if(!url) setShowImageUpload(false);
+           }} />
           </div>
         )}
 

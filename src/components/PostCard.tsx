@@ -10,7 +10,6 @@ import { Avatar } from "./ui/avatar";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import toast from "react-hot-toast";
 import { DeleteAlertDialog } from "./DeleteAlertDialog";
-import Image from "next/image";
 import { Button } from "./ui/button";
 import { HeartIcon, LogInIcon, MessageCircleIcon, SendIcon } from "lucide-react";
 import { Textarea } from "./ui/textarea";
@@ -110,7 +109,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
           {/* Post Image */}
           {post.image && (
             <div className="rounded-lg overflow-hidden">
-              <Image src={post.image}
+              <img src={post.image}
                 alt="Post Conetnt"
                 className="w-full h-auto object-cover" />
             </div>
