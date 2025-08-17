@@ -121,6 +121,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
               user ? (
                 <Button
                   variant='ghost'
+                  onClick={handleLike}
                   className={`text-muted-foreground gap-2 ${hasLiked ? 'text-red-500 hover:text-red-600' : 'hover:text-red-500'}`}>
                   {hasLiked ? (
                     <HeartIcon className="size-5 fill-current" />

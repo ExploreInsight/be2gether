@@ -26,8 +26,7 @@ async function DesktopNavbar() {
         </Link>
       </Button>
       <Button variant='ghost' className='flex items-center gap-2' asChild>
-        <Link href={`/profile/$
-          {user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]}`}>
+        <Link href={`/profile/${user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]}`}>
           <UserIcon className='h-4 w-4'/>
           <span className='hidden lg:inline'> Profile</span>
         </Link>

@@ -25,6 +25,7 @@ type User = Awaited<ReturnType<typeof getProfileByUsername>>;
 type Posts = Awaited<ReturnType<typeof getUserPosts>>;
 
 interface ProfilePageClientProps {
+    authUserId: string | null;
     user: NonNullable<User>;
     posts: Posts;
     likedPosts: Posts;
@@ -35,7 +36,8 @@ interface ProfilePageClientProps {
 function ProfilePageClient({ isFollowing: initialIsFollowing,
     likedPosts,
     posts,
-    user
+    user,
+    authUserId
 }: ProfilePageClientProps) {
 
     const { user: currentUser } = useUser();
@@ -111,7 +113,7 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
 
                                         <div>
                                             <div className="font-semibold">{user._count.followers.toLocaleString()}</div>
-                                            <div className="text-sm text-muted-foreground"> Following</div>
+                                            <div className="text-sm text-muted-foreground"> Followers</div>
                                         </div>
                                         <Separator orientation="vertical" />
                                         <div>
@@ -199,7 +201,7 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                         <div className="space-y-6">
                             {
                                 posts.length > 0 ? (
-                                    posts.map((post) => <PostCard key={post.id} post={post} dbUserId={user.id} />)
+                                    posts.map((post) => <PostCard key={post.id} post={post} dbUserId={authUserId} />)
                                 ) : (
                                     <div className="text-center py-8 text-muted-foreground"> No Posts yet</div>
                                 )
