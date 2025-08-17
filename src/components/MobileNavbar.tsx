@@ -6,6 +6,7 @@ import { BellIcon, HomeIcon, LogOutIcon, MenuIcon, MoonIcon, SunIcon, UserIcon }
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import Link from 'next/link';
 import { SignInButton, SignOutButton, useAuth, useUser } from '@clerk/nextjs';
+import { Faster_One } from 'next/font/google';
 
 const MobileNavbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -40,7 +41,7 @@ const MobileNavbar = () => {
 
           <nav className='flex flex-col space-y-4 mt-6'>
             {/* Home */}
-            <Button variant='ghost' className='flex items-center gap-3 justify-start' asChild>
+            <Button variant='ghost' className='flex items-center gap-3 justify-start' asChild onClick={()=> setShowMobileMenu(false)}>
               <Link href='/'>
                 <HomeIcon className='w-4 h-4' />
                 Home
@@ -70,7 +71,7 @@ const MobileNavbar = () => {
 
                 {/* Logout */}
                 <SignOutButton>
-                  <Button variant="ghost" className="flex items-center gap-3 justify-start w-full">
+                  <Button variant="ghost" onClick={()=> setShowMobileMenu(false)} className="flex items-center gap-3 justify-start w-full">
                     <LogOutIcon className="w-4 h-4" />
                     Logout
                   </Button>
