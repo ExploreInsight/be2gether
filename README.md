@@ -1,8 +1,13 @@
 <h1 align='center'>🫂 be2gether - A Full Stack social media app</h1>
-A social media app - “be2gether is a modern social media platform where users can connect, share, and engage — built with Next.js and powered by Clerk & Prisma.”
 
----
+<p align="center">
+  <a href="https://be2gether-f4mx.vercel.app/" target="_blank">🌐 Live Demo</a>
+</p>
 
+**be2gether** is a modern social media platform where users can connect, share, and engage — built with **Next.js, Clerk & Prisma**, and deployed on **Vercel**.
+
+ ---
+ 
 ## 🚀 Features
 - 🔐 Authentication with **Clerk** (Sign up, Sign in, Manage sessions)
 - 📝 Create and delete posts
@@ -13,6 +18,13 @@ A social media app - “be2gether is a modern social media platform where users 
 - 🌙 Light/Dark mode toggle
 - 🎨 Styled with **Tailwind CSS + shadcn/ui**
 - 🗄️ Database with **Prisma + PostgreSQL**
+
+---
+
+## 📸 Screenshot
+
+### 🏠 Homepage
+![Homepage](./public/be2gether.png)
 
 ---
 
@@ -34,11 +46,25 @@ be2gether/
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend**: Next.js, React, Tailwind CSS, shadcn/ui  
-- **Auth**: Clerk  
-- **Database**: PostgreSQL + Prisma ORM  
-- **File Uploads**: UploadThing  
-- **Deployment**: Vercel  
+
+- **Frontend**:  
+  ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)  
+  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
+  ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=radix-ui&logoColor=white)
+
+- **Auth**:  
+  ![Clerk](https://img.shields.io/badge/Clerk-3C366B?style=for-the-badge&logo=clerk&logoColor=white)
+
+- **Database**:  
+  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)  
+  ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
+
+- **File Uploads**:  
+  ![UploadThing](https://img.shields.io/badge/UploadThing-FF6B6B?style=for-the-badge&logo=upload&logoColor=white)
+
+- **Deployment**:  
+  ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 ---
 
@@ -73,10 +99,6 @@ npx prisma migrate dev
 ```bash
 npm run dev
 ```
-## 📸 Screenshot
-
-### 🏠 Homepage
-![Homepage](./public/be2gether.png)
 
 ### 👨‍💻 Author
 Chirag
