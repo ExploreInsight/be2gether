@@ -6,7 +6,7 @@ import { BellIcon, HomeIcon, LogOutIcon, MenuIcon, MoonIcon, SunIcon, UserIcon }
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
 import Link from 'next/link';
 import { SignInButton, SignOutButton, useAuth, useUser } from '@clerk/nextjs';
-import { Faster_One } from 'next/font/google';
+
 
 const MobileNavbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
