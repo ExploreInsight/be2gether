@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align='center'>🫂 be2gether - A Full Stack social media app</h1>
+A social media app - “be2gether is a modern social media platform where users can connect, share, and engage — built with Next.js and powered by Clerk & Prisma.”
 
-## Getting Started
+---
 
-First, run the development server:
+## 🚀 Features
+- 🔐 Authentication with **Clerk** (Sign up, Sign in, Manage sessions)
+- 📝 Create and delete posts
+- 📸 Image upload using **UploadThing**
+- 👤 User profiles with dynamic routes
+- ❤️ Follow/unfollow users
+- 🔔 Notifications system
+- 🌙 Light/Dark mode toggle
+- 🎨 Styled with **Tailwind CSS + shadcn/ui**
+- 🗄️ Database with **Prisma + PostgreSQL**
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+be2gether/
+├── prisma/              # Prisma schema & migrations
+├── public/              # Static assets
+├── src/
+│   ├── actions/         # Server actions (posts, users, profiles, notifications)
+│   ├── app/             # Next.js App Router pages & API routes
+│   ├── components/      # UI & feature components
+│   ├── lib/             # Utilities (Prisma, UploadThing, helpers)
+│   └── middleware.ts    # Auth & middleware logic
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Tech Stack
+- **Frontend**: Next.js, React, Tailwind CSS, shadcn/ui  
+- **Auth**: Clerk  
+- **Database**: PostgreSQL + Prisma ORM  
+- **File Uploads**: UploadThing  
+- **Deployment**: Vercel  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## ⚙️ Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Clone the repository
+```bash
+git clone https://github.com/ExploreInsight/be2gether.git
+cd be2gether
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Install dependencies
+```bash
+npm install or npm i
+```
+### 3. Set up environment variables
+Create a .env file in the root with the following:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+DATABASE_URL=your_postgres_url
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+UPLOADTHING_TOKEN=your_uploadthing_token
 
-## Deploy on Vercel
+```
+### 4. Run Prisma migrations
+```bash
+npx prisma migrate dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 5. Start the development server
+```bash
+npm run dev
+```
+## 📸 Screenshot
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🏠 Homepage
+![Homepage](./public/be2gether.png)
+
+### 👨‍💻 Author
+Chirag
