@@ -21,6 +21,13 @@ const bricolage = Bricolage_Grotesque({
 export const metadata: Metadata = {
   title: 'be2gether',
   description: 'A social media platform for everyone',
+  applicationName: 'be2gether',
+  icons: { icon: '/icon.svg', apple: '/icon.svg' },
+  openGraph: {
+    title: 'be2gether',
+    description: 'A social media platform for everyone',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({

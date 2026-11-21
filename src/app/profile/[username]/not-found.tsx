@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { HomeIcon } from "lucide-react";
+import { LogoMark } from "@/components/brand/Logo";
 
 export default function NotFound() {
   return (
@@ -9,7 +10,7 @@ export default function NotFound() {
       <Card className="w-full max-w-md">
         <CardContent className="pt-6">
           <div className="text-center space-y-6">
-            {/* LARGE 404 TEXT */}
+            <LogoMark className="mx-auto size-12" />
             <p className="font-serif text-7xl font-semibold tracking-[-0.04em] text-primary">404</p>
 
             {/* MESSAGE */}

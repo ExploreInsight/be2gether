@@ -12,14 +12,12 @@ export function Wordmark({
     <Link
       href="/"
       className={cn(
-        "font-serif text-2xl font-semibold tracking-[-0.03em]",
+        "font-serif text-2xl font-semibold tracking-[-0.035em]",
         onPrimary ? "text-primary-foreground" : "text-foreground",
         className
       )}
     >
-      be
-      <span className={onPrimary ? "opacity-70" : "text-primary"}>2</span>
-      gether
+      be<span className="text-brand-highlight">2</span>gether
     </Link>
   );
 }
