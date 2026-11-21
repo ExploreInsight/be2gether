@@ -110,7 +110,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
           {post.image && (
             <div className="rounded-lg overflow-hidden">
               <img src={post.image}
-                alt="Post Conetnt"
+                alt="Post content"
                 className="w-full h-auto object-cover" />
             </div>
           )}
@@ -122,10 +122,14 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
                 <Button
                   variant='ghost'
                   onClick={handleLike}
+                  disabled={isLiking}
+                  aria-pressed={hasLiked}
+                  aria-label={hasLiked ? "Unlike" : "Like"}
                   className={`gap-2 ${hasLiked ? 'text-destructive hover:text-destructive' : 'text-muted-foreground hover:text-destructive'}`}>
                   {hasLiked ? (
                     <HeartIcon className="size-5 fill-current" />
                   ) : <HeartIcon className="size-5" />}
+                  <span className="tabular-nums">{optimisticLikes}</span>
                 </Button>
               ) : (
                 <SignInButton mode="modal">

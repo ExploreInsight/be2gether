@@ -44,6 +44,7 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
     const [showEditDialog, setShowEditDialog] = useState(false);
     const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
     const [isUpdatingFollow, setIsUpdatingFollow] = useState(false);
+    const [isSaving, setIsSaving] = useState(false);
 
     const [editForm, setEditForm] = useState({
         name: user.name || "",
@@ -59,11 +60,20 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
             formData.append(key, value)
         });
 
-        const result = await updateProfile(formData);
+        setIsSaving(true);
+        try {
+            const result = await updateProfile(formData);
 
-        if (result?.success) {
-            setShowEditDialog(false);
-            toast.success("Profile updated Successfully")
+            if (result?.success) {
+                setShowEditDialog(false);
+                toast.success("Profile updated");
+            } else {
+                toast.error(result?.error ?? "Failed to update profile");
+            }
+        } catch {
+            toast.error("Failed to update profile");
+        } finally {
+            setIsSaving(false);
         }
     }
 
@@ -265,7 +275,7 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                         <div className="space-y-2">
                             <Label>Website</Label>
                             <Input
-                                name="location"
+                                name="website"
                                 value={editForm.website}
                                 onChange={(e) => setEditForm({ ...editForm, website: e.target.value })}
                                 placeholder="Your personal website"
@@ -278,8 +288,8 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                                     Cancel
                                 </Button>
                             </DialogClose>
-                            <Button onClick={handleEditSubmit}>
-                                Save Changes
+                            <Button onClick={handleEditSubmit} disabled={isSaving}>
+                                {isSaving ? "Saving..." : "Save Changes"}
                             </Button>
                         </div>
                     </DialogContent>
