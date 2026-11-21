@@ -6,6 +6,7 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 import { HeartIcon, MessageCircleIcon, UserPlusIcon } from "lucide-react";
 
 import { useEffect, useState } from "react";
@@ -78,16 +79,21 @@ function NotificationsPage() {
                     !notification.read ? "bg-accent/70" : ""
                   }`}
                 >
-                  <Avatar className="mt-1">
-                    <AvatarImage src={notification.creator.image ?? "/avatar.png"} />
-                  </Avatar>
+                  <Link href={`/profile/${notification.creator.username}`} className="mt-1 shrink-0">
+                    <Avatar>
+                      <AvatarImage src={notification.creator.image ?? "/avatar.png"} />
+                    </Avatar>
+                  </Link>
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center gap-2">
                       {getNotificationIcon(notification.type)}
                       <span>
-                        <span className="font-medium">
+                        <Link
+                          href={`/profile/${notification.creator.username}`}
+                          className="font-serif font-medium hover:underline"
+                        >
                           {notification.creator.name ?? notification.creator.username}
-                        </span>{" "}
+                        </Link>{" "}
                         {notification.type === "FOLLOW"
                           ? "started following you"
                           : notification.type === "LIKE"

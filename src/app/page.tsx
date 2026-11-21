@@ -3,6 +3,7 @@ import { getDbUserId } from "@/actions/user.action";
 import CreatePost from "@/components/CreatePost";
 import PostCard from "@/components/PostCard";
 import SuggestedUser from "@/components/SuggestedUser";
+import { EmptyFeed, GuestPrompt } from "@/components/feed/FeedPrompts";
 
 import { currentUser } from "@clerk/nextjs/server";
 
@@ -14,12 +15,16 @@ export default async function Home() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-10 gap-5">
       <div className="lg:col-span-6">
-        {user ? <CreatePost /> : null}
+        {user ? <CreatePost /> : posts.length > 0 ? <GuestPrompt /> : null}
 
-        <div className="space-y-6">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} dbUserId={dbUserId} />
-          ))}
+        <div className="space-y-5">
+          {posts.length === 0 ? (
+            <EmptyFeed signedIn={!!user} />
+          ) : (
+            posts.map((post) => (
+              <PostCard key={post.id} post={post} dbUserId={dbUserId} />
+            ))
+          )}
         </div>
        </div>
 

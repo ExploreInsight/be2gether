@@ -2,10 +2,10 @@
 import React, { useState } from 'react'
 import { Button } from './ui/button'
 import { useTheme } from 'next-themes'
-import { BellIcon, HomeIcon, LogOutIcon, MenuIcon, MoonIcon, SunIcon, UserIcon } from 'lucide-react';
+import { LogOutIcon, MenuIcon, MoonIcon, SunIcon } from 'lucide-react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from './ui/sheet';
-import Link from 'next/link';
 import { SignInButton, SignOutButton, useAuth, useUser } from '@clerk/nextjs';
+import { AppNav } from './nav/AppNav';
 
 
 const MobileNavbar = () => {
@@ -40,53 +40,31 @@ const MobileNavbar = () => {
             <SheetTitle>Menu</SheetTitle>
           </SheetHeader>
 
-          <nav className='flex flex-col space-y-4 mt-6'>
-            {/* Home */}
-            <Button variant='ghost' className='flex items-center gap-3 justify-start' asChild onClick={()=> setShowMobileMenu(false)}>
-              <Link href='/'>
-                <HomeIcon className='w-4 h-4' />
-                Home
-              </Link>
-            </Button>
+          <div className="mt-6 flex flex-col gap-1">
+            <AppNav
+              signedIn={!!isSignedIn}
+              username={user?.username ?? user?.emailAddresses[0]?.emailAddress.split("@")[0]}
+              layout="sheet"
+              onNavigate={() => setShowMobileMenu(false)}
+            />
 
             {isSignedIn ? (
-              <>
-                {/* Notifications */}
-                <Button variant='ghost' className='flex items-center gap-3 justify-start' asChild onClick={() => setShowMobileMenu(false)}>
-                  <Link href='/notifications'>
-                    <BellIcon className='w-4 h-4' />
-                    Notifications
-                  </Link>
+              <SignOutButton>
+                <Button
+                  variant="ghost"
+                  onClick={() => setShowMobileMenu(false)}
+                  className="justify-start gap-3"
+                >
+                  <LogOutIcon className="size-4" />
+                  Log out
                 </Button>
-
-                {/* Profile */}
-                {user && (
-                  <Button variant="ghost" className="flex items-center gap-3 justify-start" asChild onClick={() => setShowMobileMenu(false)}>
-                    <Link
-                       href={`/profile/${user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]}`}>
-                      <UserIcon className="w-4 h-4" />
-                      Profile
-                    </Link>
-                  </Button>
-                )}
-
-                {/* Logout */}
-                <SignOutButton>
-                  <Button variant="ghost" onClick={()=> setShowMobileMenu(false)} className="flex items-center gap-3 justify-start w-full">
-                    <LogOutIcon className="w-4 h-4" />
-                    Logout
-                  </Button>
-                </SignOutButton>
-              </>
+              </SignOutButton>
             ) : (
-              // Sign In
-              <SignInButton mode='modal'>
-                <Button variant="default" className="w-full">
-                  Sign In
-                </Button>
+              <SignInButton mode="modal">
+                <Button className="mt-2 w-full">Sign in</Button>
               </SignInButton>
             )}
-          </nav>
+          </div>
         </SheetContent>
       </Sheet>
     </div>
