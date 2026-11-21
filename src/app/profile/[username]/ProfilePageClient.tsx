@@ -189,16 +189,16 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                 </div>
 
                 <Tabs defaultValue="posts" className="w-full">
-                    <TabsList className="h-auto w-full justify-start gap-6 rounded-none border-0 border-b bg-transparent p-0">
+                    <TabsList className="h-auto w-full justify-start gap-6 rounded-none border-0 border-b border-border bg-transparent p-0">
                         <TabsTrigger
                             value="posts"
-                            className="h-auto flex-none items-center gap-2 rounded-none border-b-2 border-transparent bg-transparent px-0 pt-0 pb-3 font-semibold text-muted-foreground shadow-none hover:text-foreground data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none">
+                            className="relative h-auto flex-none items-center gap-2 rounded-none border-0 bg-transparent px-0 pt-0 pb-3 font-semibold text-muted-foreground shadow-none hover:text-foreground data-[state=active]:text-foreground data-[state=active]:shadow-none after:absolute after:-bottom-px after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-transparent after:transition-colors data-[state=active]:after:bg-primary">
                             <FileTextIcon className="size-4" />
                             Posts
                         </TabsTrigger>
                         <TabsTrigger
                             value="likes"
-                            className="h-auto flex-none items-center gap-2 rounded-none border-b-2 border-transparent bg-transparent px-0 pt-0 pb-3 font-semibold text-muted-foreground shadow-none hover:text-foreground data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none">
+                            className="relative h-auto flex-none items-center gap-2 rounded-none border-0 bg-transparent px-0 pt-0 pb-3 font-semibold text-muted-foreground shadow-none hover:text-foreground data-[state=active]:text-foreground data-[state=active]:shadow-none after:absolute after:-bottom-px after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-transparent after:transition-colors data-[state=active]:after:bg-primary">
                             <HeartIcon className="size-4" />
                             Likes
                         </TabsTrigger>

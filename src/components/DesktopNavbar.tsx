@@ -13,7 +13,7 @@ async function DesktopNavbar() {
 
   return (
     <div className="hidden md:flex items-center gap-2">
-      <ModeToggle className="border-brand-foreground/30 text-brand-foreground hover:bg-brand-foreground/10 hover:text-brand-foreground" />
+      <ModeToggle className="border-transparent bg-transparent text-brand-foreground hover:bg-brand-foreground/10 hover:text-brand-foreground" />
       <AppNav
         signedIn={!!user}
         username={username}

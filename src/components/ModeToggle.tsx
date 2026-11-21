@@ -7,7 +7,7 @@ const ModeToggle = ({ className }: { className?: string }) => {
     const { theme, setTheme } = useTheme();
     return (
         <Button
-            variant="outline"
+            variant="ghost"
             size='icon'
             className={className}
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
