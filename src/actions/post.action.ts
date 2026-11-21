@@ -17,7 +17,8 @@ export async function createPost(content: string, image: string) {
         authorId: userId,
       },
     });
-    revalidatePath("/"); // purge the cahce for the home page
+    revalidatePath("/");
+    revalidatePath(`/post/${post.id}`);
     return { success: true, post };
   } catch (error) {
     console.error("Failed to create post:", error);
@@ -25,53 +26,67 @@ export async function createPost(content: string, image: string) {
   }
 }
 
+const postInclude = {
+  author: {
+    select: {
+      id: true,
+      name: true,
+      image: true,
+      username: true,
+    },
+  },
+  comments: {
+    include: {
+      author: {
+        select: {
+          id: true,
+          name: true,
+          image: true,
+          username: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "asc" as const,
+    },
+  },
+  likes: {
+    select: {
+      userId: true,
+    },
+  },
+  _count: {
+    select: {
+      likes: true,
+      comments: true,
+    },
+  },
+};
+
 export async function getPosts() {
   try {
     const posts = await prisma.post.findMany({
       orderBy: {
         createdAt: "desc",
       },
-      include: {
-        author: {
-          select: {
-            id: true,
-            name: true,
-            image: true,
-            username: true,
-          },
-        },
-        comments: {
-          include: {
-            author: {
-              select: {
-                id: true,
-                name: true,
-                image: true,
-                username: true,
-              },
-            },
-          },
-          orderBy: {
-            createdAt: "asc",
-          },
-        },
-        likes: {
-          select: {
-            userId: true,
-          },
-        },
-        _count: {
-          select: {
-            likes: true,
-            comments: true,
-          },
-        },
-      },
+      include: postInclude,
     });
     return posts;
   } catch (error) {
     console.log("Error in getPosts", error);
     throw new Error("Failed to fetch posts");
+  }
+}
+
+export async function getPost(postId: string) {
+  try {
+    return await prisma.post.findUnique({
+      where: { id: postId },
+      include: postInclude,
+    });
+  } catch (error) {
+    console.error("Error in getPost", error);
+    throw new Error("Failed to fetch post");
   }
 }
 
@@ -132,7 +147,8 @@ export async function toggleLike(postId: string) {
       ]);
     }
 
-    revalidatePath("/"); // for purging the cahce of the home page
+    revalidatePath("/");
+    revalidatePath(`/post/${postId}`);
     return { success: true };
   } catch (error) {
     console.error("Failed to toggle like:", error);
@@ -180,7 +196,8 @@ export async function createComment(postId: string, content: string) {
       }
       return [newComment];
     });
-    revalidatePath(`/`);
+    revalidatePath("/");
+    revalidatePath(`/post/${postId}`);
     return { success: true, comment };
   } catch (error) {
     console.error("Failed to create comment:", error);
@@ -209,6 +226,7 @@ export async function deletePost(postId: string) {
     });
 
     revalidatePath("/");
+    revalidatePath(`/post/${postId}`);
 
     return { success: true };
   } catch (error) {

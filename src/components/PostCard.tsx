@@ -12,6 +12,7 @@ import toast from "react-hot-toast";
 import { DeleteAlertDialog } from "./DeleteAlertDialog";
 import { Button } from "./ui/button";
 import { HeartIcon, LogInIcon, MessageCircleIcon, SendIcon } from "lucide-react";
+import { SharePostButton } from "./feed/SharePostButton";
 import { Textarea } from "./ui/textarea";
 
 
@@ -115,8 +116,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
             </div>
           )}
 
-          {/* Like and Comment Buttons */}
-          <div className="flex items-center pt-2 space-x-4">
+          <div className="grid grid-cols-3 border-t -mx-6 -mb-6 [&>*]:w-full">
             {
               user ? (
                 <Button
@@ -125,31 +125,33 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
                   disabled={isLiking}
                   aria-pressed={hasLiked}
                   aria-label={hasLiked ? "Unlike" : "Like"}
-                  className={`gap-2 ${hasLiked ? 'text-destructive hover:text-destructive' : 'text-muted-foreground hover:text-destructive'}`}>
+                  className={`h-11 w-full rounded-none gap-2 ${hasLiked ? 'text-destructive hover:text-destructive' : 'text-muted-foreground hover:text-destructive'}`}>
                   {hasLiked ? (
-                    <HeartIcon className="size-5 fill-current" />
-                  ) : <HeartIcon className="size-5" />}
+                    <HeartIcon className="size-4 fill-current" />
+                  ) : <HeartIcon className="size-4" />}
+                  <span>Like</span>
                   <span className="tabular-nums">{optimisticLikes}</span>
                 </Button>
               ) : (
                 <SignInButton mode="modal">
-                  <Button variant="ghost" size="sm" className="text-muted-foreground gap-2">
-                    <HeartIcon className="size-5" />
-                    <span>{optimisticLikes}</span>
+                  <Button variant="ghost" className="h-11 w-full rounded-none gap-2 text-muted-foreground">
+                    <HeartIcon className="size-4" />
+                    <span>Like</span>
+                    <span className="tabular-nums">{optimisticLikes}</span>
                   </Button>
                 </SignInButton>
               )
             }
-            <Button 
+            <Button
             variant='ghost'
-            size='sm'
-            className={`gap-2 ${showComments ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
+            className={`h-11 w-full rounded-none gap-2 ${showComments ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
             onClick={()=> setShowComments(prev => !prev)}
             >
-              <MessageCircleIcon  className={`size-5 ${showComments ? "fill-current" : ""}`}
-               />
-               <span>{post.comments.length}</span>
+              <MessageCircleIcon className={`size-4 ${showComments ? "fill-current" : ""}`} />
+              <span>Comment</span>
+              <span className="tabular-nums">{post.comments.length}</span>
             </Button>
+            <SharePostButton postId={post.id} text={post.content} />
           </div>
 
           {/* Comment Section */}
