@@ -43,7 +43,7 @@ export default function RootLayout({
               <main className='py-6'>
                 <div className='max-w-6xl mx-auto px-4'>
                   <div className='grid grid-cols-1 lg:grid-cols-12 gap-5'>
-                    <div className='hidden lg:block lg:col-span-3'>
+                    <div className='hidden lg:block lg:col-span-3 lg:sticky lg:top-20 lg:self-start'>
                       <Sidebar />
                     </div>
                     <div className='lg:col-span-9'>

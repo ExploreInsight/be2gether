@@ -11,13 +11,13 @@ async function DesktopNavbar() {
 
   return (
     <div className="hidden md:flex items-center gap-2">
-      <ModeToggle />
-      <AppNav signedIn={!!user} username={username} layout="desktop" />
+      <ModeToggle className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground" />
+      <AppNav signedIn={!!user} username={username} layout="desktop" tone="on-primary" />
       {user ? (
         <UserButton />
       ) : (
         <SignInButton mode="modal">
-          <Button>Sign in</Button>
+          <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">Sign in</Button>
         </SignInButton>
       )}
     </div>

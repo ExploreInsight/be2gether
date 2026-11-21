@@ -120,7 +120,7 @@ async function Sidebar() {
   if (!user) return null;
 
   return (
-    <aside className="sticky top-[4.5rem]">
+    <aside>
       <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col items-center text-center">
@@ -194,7 +194,7 @@ export default Sidebar;
 
 const UnAuthenticatedSidebar = () => {
   return (
-    <aside className="sticky top-[4.5rem]">
+    <aside>
       <Card>
         <CardHeader>
           <CardTitle className="text-center text-xl font-semibold">

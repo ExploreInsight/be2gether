@@ -10,6 +10,7 @@ type AppNavProps = {
   signedIn: boolean;
   username?: string | null;
   layout: "desktop" | "sheet";
+  tone?: "default" | "on-primary";
   onNavigate?: () => void;
 };
 
@@ -20,7 +21,7 @@ type Item = {
   active: boolean;
 };
 
-export function AppNav({ signedIn, username, layout, onNavigate }: AppNavProps) {
+export function AppNav({ signedIn, username, layout, tone = "default", onNavigate }: AppNavProps) {
   const pathname = usePathname();
   const profileHref = username ? `/profile/${username}` : null;
 
@@ -58,7 +59,11 @@ export function AppNav({ signedIn, username, layout, onNavigate }: AppNavProps) 
             onClick={onNavigate}
             className={cn(
               layout === "sheet" ? "justify-start gap-3" : "gap-2",
-              item.active && "bg-accent text-accent-foreground"
+              tone === "on-primary"
+                ? item.active
+                  ? "bg-primary-foreground/15 text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"
+                  : "text-primary-foreground/80 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                : item.active && "bg-accent text-accent-foreground"
             )}
           >
             <Link href={item.href} aria-current={item.active ? "page" : undefined}>

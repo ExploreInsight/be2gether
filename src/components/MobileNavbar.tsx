@@ -22,7 +22,7 @@ const MobileNavbar = () => {
         size='icon'
         aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        className="mr-2"
+        className="mr-1 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
       >
         <SunIcon className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
         <MoonIcon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
@@ -31,7 +31,7 @@ const MobileNavbar = () => {
       {/* Mobile Menu */}
       <Sheet open={showMobileMenu} onOpenChange={setShowMobileMenu}>
         <SheetTrigger asChild>
-          <Button variant='ghost' size='icon'>
+          <Button variant='ghost' size='icon' className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
             <MenuIcon className='h-6 w-6' />
           </Button>
         </SheetTrigger>

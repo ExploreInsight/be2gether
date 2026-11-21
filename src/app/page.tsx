@@ -28,7 +28,7 @@ export default async function Home() {
         </div>
        </div>
 
-      <div className="hidden lg:block lg:col-span-4 sticky top-[4.5rem]">
+      <div className="hidden lg:block lg:col-span-4 lg:sticky lg:top-20 lg:self-start">
        {/* {user ? <SuggestedUser /> : null} */}
        <SuggestedUser />
       </div>

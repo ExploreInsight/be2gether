@@ -4,7 +4,7 @@ A daily social feed. People open it on a phone at night and a laptop in daylight
 
 ## Color
 
-One accent: lagoon pine. It is the wordmark `2`, primary buttons, comment-active, and focus. Neutrals are the same hue at very low chroma, not pure gray and not cream paper.
+One accent: lagoon pine. It owns the header bar, primary buttons, comment-active, and focus. The page behind the cards is a sage wash, not white. Neutrals are the same hue at very low chroma, not pure gray and not cream paper.
 
 Likes and delete use destructive red. Follows use success green. Warning is reserved and is not the accent. Do not hardcode Tailwind palette colors (`red-500`, `blue-500`, `green-500`) in product UI.
 
