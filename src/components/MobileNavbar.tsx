@@ -20,6 +20,7 @@ const MobileNavbar = () => {
       <Button
         variant='ghost'
         size='icon'
+        aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         className="mr-2"
       >

@@ -64,7 +64,7 @@ function FollowButton({
   return (
     <Button
       size="sm"
-      variant="secondary"
+      variant="default"
       onClick={handleFollow}
       disabled={isLoading}
       className="w-20"

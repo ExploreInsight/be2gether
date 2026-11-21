@@ -87,7 +87,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
                 <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 truncate">
                   <Link
                     href={`/profile/${post.author.username}`}
-                    className="font-semibold truncate"
+                    className="font-serif font-semibold tracking-[-0.02em] truncate"
                   >
                     {post.author.name}
                   </Link>
@@ -102,7 +102,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
                   <DeleteAlertDialog isDeleting={isDeleting} onDelete={handleDeletePost} />
                 )}
               </div>
-              <p className="mt-2 text-sm text-foreground break-words">{post.content}</p>
+              <p className="mt-2 text-base leading-7 text-foreground break-words">{post.content}</p>
             </div>
 
           </div>
@@ -122,7 +122,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
                 <Button
                   variant='ghost'
                   onClick={handleLike}
-                  className={`text-muted-foreground gap-2 ${hasLiked ? 'text-red-500 hover:text-red-600' : 'hover:text-red-500'}`}>
+                  className={`gap-2 ${hasLiked ? 'text-destructive hover:text-destructive' : 'text-muted-foreground hover:text-destructive'}`}>
                   {hasLiked ? (
                     <HeartIcon className="size-5 fill-current" />
                   ) : <HeartIcon className="size-5" />}
@@ -139,10 +139,10 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
             <Button 
             variant='ghost'
             size='sm'
-            className="text-muted-foreground gap-2 hover:text-blue-500"
+            className={`gap-2 ${showComments ? "text-primary" : "text-muted-foreground hover:text-primary"}`}
             onClick={()=> setShowComments(prev => !prev)}
             >
-              <MessageCircleIcon  className={`size-5 ${showComments ? "fill-blue-500" : ""}`}
+              <MessageCircleIcon  className={`size-5 ${showComments ? "fill-current" : ""}`}
                />
                <span>{post.comments.length}</span>
             </Button>
@@ -161,7 +161,7 @@ function PostCard({ post, dbUserId }: { post: Post, dbUserId: string | null }) {
                     </Avatar>
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                        <span className="font-medium text-sm">{ comment.author.name}</span>
+                        <span className="font-serif font-medium text-sm">{ comment.author.name}</span>
                         <span className="text-sm text-muted-foreground">
                              @{comment.author.username}
                         </span>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { HomeIcon, ArrowLeftIcon } from "lucide-react";
+import { HomeIcon } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -10,7 +10,7 @@ export default function NotFound() {
         <CardContent className="pt-6">
           <div className="text-center space-y-6">
             {/* LARGE 404 TEXT */}
-            <p className="text-8xl font-bold text-primary font-mono">404</p>
+            <p className="font-serif text-7xl font-semibold tracking-[-0.04em] text-primary">404</p>
 
             {/* MESSAGE */}
             <div className="space-y-2">

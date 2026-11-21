@@ -17,11 +17,11 @@ type Notification = Notifications[number];
 const getNotificationIcon = (type: string) => {
   switch (type) {
     case "LIKE":
-      return <HeartIcon className="size-4 text-red-500" />;
+      return <HeartIcon className="size-4 text-destructive" />;
     case "COMMENT":
-      return <MessageCircleIcon className="size-4 text-blue-500" />;
+      return <MessageCircleIcon className="size-4 text-primary" />;
     case "FOLLOW":
-      return <UserPlusIcon className="size-4 text-green-500" />;
+      return <UserPlusIcon className="size-4 text-success" />;
     default:
       return null;
   }
@@ -66,13 +66,16 @@ function NotificationsPage() {
         <CardContent className="p-0">
           <ScrollArea className="h-[calc(100vh-12rem)]">
             {notifications.length === 0 ? (
-              <div className="p-4 text-center text-muted-foreground">No notifications yet</div>
+              <div className="px-6 py-16 text-center">
+                <p className="font-serif text-lg text-foreground">No notifications yet</p>
+                <p className="mt-1 text-sm text-muted-foreground">Likes, comments, and follows show up here.</p>
+              </div>
             ) : (
               notifications.map((notification) => (
                 <div
                   key={notification.id}
                   className={`flex items-start gap-4 p-4 border-b hover:bg-muted/25 transition-colors ${
-                    !notification.read ? "bg-muted/50" : ""
+                    !notification.read ? "bg-accent/70" : ""
                   }`}
                 >
                   <Avatar className="mt-1">

@@ -98,7 +98,7 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                                     <AvatarImage src={user.image ?? "/avatar.png"} />
                                 </Avatar>
 
-                                <h1 className="mt-4 text-2xl font-bold">{user.name ?? user.username}</h1>
+                                <h1 className="mt-4 font-serif text-2xl font-semibold tracking-[-0.03em]">{user.name ?? user.username}</h1>
                                 <p className="text-muted-foreground">@{user.username}</p>
                                 <p className="mt-2 text-sm">{user.bio}</p>
 
@@ -106,18 +106,18 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                                 <div className="w-full mt-6">
                                     <div className="flex justify-between mb-4">
                                         <div>
-                                            <div className="font-semibold">{user._count.following.toLocaleString()}</div>
+                                            <div className="font-serif text-lg font-semibold tabular-nums">{user._count.following.toLocaleString()}</div>
                                             <div className="text-sm text-muted-foreground"> Following</div>
                                         </div>
                                         <Separator orientation="vertical" />
 
                                         <div>
-                                            <div className="font-semibold">{user._count.followers.toLocaleString()}</div>
+                                            <div className="font-serif text-lg font-semibold tabular-nums">{user._count.followers.toLocaleString()}</div>
                                             <div className="text-sm text-muted-foreground"> Followers</div>
                                         </div>
                                         <Separator orientation="vertical" />
                                         <div>
-                                            <div className="font-semibold">{user._count.posts.toLocaleString()}</div>
+                                            <div className="font-serif text-lg font-semibold tabular-nums">{user._count.posts.toLocaleString()}</div>
                                             <div className="text-sm text-muted-foreground">Posts</div>
                                         </div>
                                     </div>
@@ -203,7 +203,10 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                                 posts.length > 0 ? (
                                     posts.map((post) => <PostCard key={post.id} post={post} dbUserId={authUserId} />)
                                 ) : (
-                                    <div className="text-center py-8 text-muted-foreground"> No Posts yet</div>
+                                    <div className="rounded-xl border border-dashed px-6 py-14 text-center">
+                                        <p className="font-serif text-lg">No posts yet</p>
+                                        <p className="mt-1 text-sm text-muted-foreground">Posts from this profile will land here.</p>
+                                    </div>
                                 )
                             }
                         </div>
@@ -214,7 +217,10 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                             {likedPosts.length > 0 ? (
                                 likedPosts.map((post) => <PostCard key={post.id} post={post} dbUserId={user.id} />)
                             ) : (
-                                <div className="text-center py-8 text-muted-foreground">No liked posts to show</div>
+                                <div className="rounded-xl border border-dashed px-6 py-14 text-center">
+                                    <p className="font-serif text-lg">No liked posts</p>
+                                    <p className="mt-1 text-sm text-muted-foreground">Posts this person likes will show up here.</p>
+                                </div>
                             )}
                         </div>
                     </TabsContent>

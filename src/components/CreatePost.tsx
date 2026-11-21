@@ -51,7 +51,7 @@ return (
           </Avatar>
           <Textarea
             placeholder="What's on your mind?"
-            className="min-h-[50px] resize-none border-none focus-visible:ring-0 p-2 text-base"
+            className="min-h-16 resize-none border-none focus-visible:ring-0 px-2 py-1.5 text-base leading-6"
             value={content}
             onChange={(e)=> setContent(e.target.value)}
             disabled={isPosting}

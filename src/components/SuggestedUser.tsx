@@ -52,7 +52,7 @@ function SuggestedUser() {
                   </Avatar>
                 </Link>
                 <div className="text-xs">
-                  <Link href={`/profile/${user.username}`} className="font-medium">
+                  <Link href={`/profile/${user.username}`} className="font-serif text-sm font-medium">
                     {user.name}
                   </Link>
                   <p className="text-muted-foreground">@{user.username}</p>

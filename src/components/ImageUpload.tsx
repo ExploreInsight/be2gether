@@ -17,10 +17,11 @@ function ImageUpload({ endpoint, onChange, value }: ImageUploadProps) {
                 <img src={value} alt="Uploaded" className="rounded-md size-40 object-cover" />
                 <button
                     onClick={() => onChange("")}
-                    className="absolute top-0 right-0 p-1 bg-red-500 rounded-full shadow-sm"
+                    className="absolute top-0 right-0 p-1 bg-destructive text-destructive-foreground rounded-full shadow-sm"
                     type="button"
+                    aria-label="Remove image"
                 >
-                    <XIcon className="h-4 w-4 text-white" />
+                    <XIcon className="h-4 w-4" />
                 </button>
             </div>
         )

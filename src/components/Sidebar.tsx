@@ -120,7 +120,7 @@ async function Sidebar() {
   if (!user) return null;
 
   return (
-    <aside className="sticky top-20">
+    <aside className="sticky top-[4.5rem]">
       <Card>
         <CardContent className="pt-6">
           <div className="flex flex-col items-center text-center">
@@ -135,7 +135,7 @@ async function Sidebar() {
                 />
               </Avatar>
               <div className="mt-4 space-y-1">
-                <h3 className="font-semibold text-lg">{user.name}</h3>
+                <h3 className="font-serif text-lg font-semibold tracking-[-0.02em]">{user.name}</h3>
                 <p className="text-sm text-muted-foreground">@{user.username}</p>
               </div>
             </Link>
@@ -150,12 +150,12 @@ async function Sidebar() {
 
             <div className="flex justify-between w-full px-4">
               <div className="text-center">
-                <p className="font-medium">{user._count.following}</p>
+                <p className="font-serif font-semibold tabular-nums">{user._count.following}</p>
                 <p className="text-xs text-muted-foreground">Following</p>
               </div>
               <Separator orientation="vertical" className="h-8" />
               <div className="text-center">
-                <p className="font-medium">{user._count.followers}</p>
+                <p className="font-serif font-semibold tabular-nums">{user._count.followers}</p>
                 <p className="text-xs text-muted-foreground">Followers</p>
               </div>
             </div>
@@ -194,7 +194,7 @@ export default Sidebar;
 
 const UnAuthenticatedSidebar = () => {
   return (
-    <aside className="sticky top-20">
+    <aside className="sticky top-[4.5rem]">
       <Card>
         <CardHeader>
           <CardTitle className="text-center text-xl font-semibold">

@@ -33,7 +33,7 @@ export function DeleteAlertDialog({
         <Button
           variant="ghost"
           size="sm"
-          className="text-muted-foreground hover:text-red-500 -mr-2"
+          className="text-muted-foreground hover:text-destructive -mr-2"
         >
           {isDeleting ? (
             <Loader2Icon className="size-4 animate-spin" />
@@ -51,7 +51,7 @@ export function DeleteAlertDialog({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={onDelete}
-            className="bg-red-500 hover:bg-red-600"
+            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             disabled={isDeleting}
           >
             {isDeleting ? "Deleting..." : "Delete"}
