@@ -1,6 +1,6 @@
 import { type Metadata } from 'next'
 import { ClerkProvider } from '@clerk/nextjs'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Bricolage_Grotesque, Figtree } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import Navbar from '@/components/Navbar'
@@ -8,13 +8,13 @@ import Sidebar from '@/components/Sidebar'
 import { Toaster } from 'react-hot-toast'
 
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const figtree = Figtree({
+  variable: '--font-figtree',
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const bricolage = Bricolage_Grotesque({
+  variable: '--font-bricolage',
   subsets: ['latin'],
 })
 
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className={`${figtree.variable} ${bricolage.variable}`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -55,7 +55,16 @@ export default function RootLayout({
               </main>
 
             </div>
-            <Toaster/>
+            <Toaster
+              toastOptions={{
+                style: {
+                  background: "var(--card)",
+                  color: "var(--card-foreground)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--radius)",
+                },
+              }}
+            />
           </ThemeProvider>
         </body>
       </html>
