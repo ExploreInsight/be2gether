@@ -42,23 +42,23 @@ function CreatePost() {
 
 
 return (
-  <Card className="mb-4">
-    <CardContent>
+  <Card className="mb-4 gap-0 py-0">
+    <CardContent className="px-5 pt-5 pb-4">
       <div className="space-y-4">
-        <div className="flex space-x-4">
-          <Avatar className="w-8 h-8">
+        <div className="flex gap-3">
+          <Avatar className="size-9 shrink-0">
             <AvatarImage src={user?.imageUrl || "/avatar.png"} />
           </Avatar>
           <Textarea
             placeholder="What's on your mind?"
-            className="min-h-16 resize-none border-none focus-visible:ring-0 px-2 py-1.5 text-base leading-6"
+            className="min-h-20 resize-none border-none bg-transparent px-0 py-1 text-[0.9375rem] leading-6 shadow-none focus-visible:ring-0 dark:bg-transparent"
             value={content}
             onChange={(e)=> setContent(e.target.value)}
             disabled={isPosting}
           />
         </div>
         {(showImageUpload || imageUrl) && (
-          <div className="border rounded-lg p-4">
+          <div className="overflow-hidden rounded-lg border">
            <ImageUpload
            endpoint="postImage"
            value={imageUrl}
@@ -69,13 +69,13 @@ return (
           </div>
         )}
 
-        <div className="flex items-center justify-between border-t pt-2">
+        <div className="flex items-center justify-between border-t pt-3">
           <div className="flex">
             <Button
               type="button"
               variant='ghost'
               size='sm'
-              className="text-muted-foreground hover:text-primary" 
+              className="text-muted-foreground hover:text-primary"
               onClick={()=> setShowImageUpload(!showImageUpload)}
               disabled={isPosting}
               >

@@ -104,7 +104,7 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                     <Card className="bg-card">
                         <CardContent className="pt-6">
                             <div className="flex flex-col items-center text-center">
-                                <Avatar className="w-24 h-24">
+                                <Avatar className="size-24">
                                     <AvatarImage src={user.image ?? "/avatar.png"} />
                                 </Avatar>
 
@@ -189,19 +189,16 @@ function ProfilePageClient({ isFollowing: initialIsFollowing,
                 </div>
 
                 <Tabs defaultValue="posts" className="w-full">
-                    <TabsList className="w-full justify-start h-auto border-b rounded-none p-0 bg-transparent">
+                    <TabsList className="h-auto w-full justify-start gap-6 rounded-none border-0 border-b bg-transparent p-0">
                         <TabsTrigger
                             value="posts"
-                            className="flex items-center gap-2 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-primary
-                            data-[state=active]:bg-transparent px-6 font-semibold">
+                            className="h-auto flex-none items-center gap-2 rounded-none border-b-2 border-transparent bg-transparent px-0 pt-0 pb-3 font-semibold text-muted-foreground shadow-none hover:text-foreground data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none">
                             <FileTextIcon className="size-4" />
                             Posts
                         </TabsTrigger>
                         <TabsTrigger
                             value="likes"
-                            className="flex items-center gap-2 rounded-none data-[state=active]:border-b-2 data-[state=active]:border-primary
-               data-[state=active]:bg-transparent px-6 font-semibold"
-                        >
+                            className="h-auto flex-none items-center gap-2 rounded-none border-b-2 border-transparent bg-transparent px-0 pt-0 pb-3 font-semibold text-muted-foreground shadow-none hover:text-foreground data-[state=active]:border-primary data-[state=active]:bg-transparent data-[state=active]:text-foreground data-[state=active]:shadow-none">
                             <HeartIcon className="size-4" />
                             Likes
                         </TabsTrigger>

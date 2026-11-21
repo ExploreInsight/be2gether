@@ -64,10 +64,10 @@ function FollowButton({
   return (
     <Button
       size="sm"
-      variant="default"
+      variant="outline"
       onClick={handleFollow}
       disabled={isLoading}
-      className="w-20"
+      className="w-20 shrink-0"
     >
       {isLoading ? <Loader2Icon className="size-4 animate-spin" /> : "Follow"}
     </Button>

@@ -11,6 +11,7 @@ type AppNavProps = {
   username?: string | null;
   layout: "desktop" | "sheet";
   tone?: "default" | "on-brand";
+  unreadCount?: number;
   onNavigate?: () => void;
 };
 
@@ -19,9 +20,17 @@ type Item = {
   label: string;
   icon: LucideIcon;
   active: boolean;
+  badge?: number;
 };
 
-export function AppNav({ signedIn, username, layout, tone = "default", onNavigate }: AppNavProps) {
+export function AppNav({
+  signedIn,
+  username,
+  layout,
+  tone = "default",
+  unreadCount = 0,
+  onNavigate,
+}: AppNavProps) {
   const pathname = usePathname();
   const profileHref = username ? `/profile/${username}` : null;
 
@@ -35,6 +44,7 @@ export function AppNav({ signedIn, username, layout, tone = "default", onNavigat
       label: "Notifications",
       icon: BellIcon,
       active: pathname.startsWith("/notifications"),
+      badge: unreadCount,
     });
 
     if (profileHref) {
@@ -67,7 +77,21 @@ export function AppNav({ signedIn, username, layout, tone = "default", onNavigat
             )}
           >
             <Link href={item.href} aria-current={item.active ? "page" : undefined}>
-              <Icon className="size-4" />
+              <span className="relative inline-flex">
+                <Icon className="size-4" />
+                {!!item.badge && (
+                  <span
+                    className={cn(
+                      "absolute -right-2 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[0.625rem] font-semibold tabular-nums",
+                      tone === "on-brand"
+                        ? "bg-brand-foreground text-brand"
+                        : "bg-primary text-primary-foreground"
+                    )}
+                  >
+                    {item.badge > 9 ? "9+" : item.badge}
+                  </span>
+                )}
+              </span>
               <span className={layout === "desktop" ? "hidden lg:inline" : undefined}>{item.label}</span>
             </Link>
           </Button>

@@ -121,14 +121,14 @@ async function Sidebar() {
 
   return (
     <aside>
-      <Card>
-        <CardContent className="pt-6">
+      <Card className="gap-0 py-0">
+        <CardContent className="px-5 pt-6 pb-5">
           <div className="flex flex-col items-center text-center">
             <Link
               href={`/profile/${user.username}`}
-              className="flex flex-col items-center hover:opacity-90 transition"
+              className="flex flex-col items-center transition hover:opacity-90"
             >
-              <Avatar className="w-20 h-20 border-2">
+              <Avatar className="size-20">
                 <AvatarImage
                   src={user.image || "/avatar.png"}
                   alt={`${user.name}'s avatar`}
@@ -162,27 +162,29 @@ async function Sidebar() {
 
             <Separator className="my-4" />
 
-            <div className="w-full space-y-2 text-sm text-muted-foreground">
-              <div className="flex items-center">
-                <MapPinIcon className="w-4 h-4 mr-2" />
-                {user.location || "No location"}
-              </div>
-              <div className="flex items-center">
-                <LinkIcon className="w-4 h-4 mr-2 shrink-0" />
-                {user.website ? (
-                  <a
-                    href={user.website.startsWith("http") ? user.website : `https://${user.website}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline truncate"
-                  >
-                    {user.website}
-                  </a>
-                ) : (
-                  "No website"
+            {(user.location || user.website) && (
+              <div className="w-full space-y-2 text-sm text-muted-foreground">
+                {user.location && (
+                  <div className="flex items-center">
+                    <MapPinIcon className="mr-2 size-4 shrink-0" />
+                    <span className="truncate">{user.location}</span>
+                  </div>
+                )}
+                {user.website && (
+                  <div className="flex items-center">
+                    <LinkIcon className="mr-2 size-4 shrink-0" />
+                    <a
+                      href={user.website.startsWith("http") ? user.website : `https://${user.website}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="truncate hover:underline"
+                    >
+                      {user.website}
+                    </a>
+                  </div>
                 )}
               </div>
-            </div>
+            )}
           </div>
         </CardContent>
       </Card>

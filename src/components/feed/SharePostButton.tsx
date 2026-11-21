@@ -53,7 +53,7 @@ export function SharePostButton({
       type="button"
       variant="ghost"
       className={cn(
-        "h-11 w-full rounded-none gap-2 text-muted-foreground hover:text-primary",
+        "h-11 w-full rounded-none gap-1.5 text-muted-foreground hover:text-primary",
         className
       )}
       onClick={share}
