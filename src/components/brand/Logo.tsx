@@ -2,8 +2,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const TONES = {
-  solid: { tile: "var(--primary)", glyph: "var(--primary-foreground)" },
-  inverse: { tile: "currentColor", glyph: "var(--primary)" },
+  solid: { tile: "var(--brand)", glyph: "var(--brand-foreground)" },
+  inverse: { tile: "currentColor", glyph: "var(--brand)" },
 } as const;
 
 export function LogoMark({
@@ -54,7 +54,7 @@ export function Logo({
       <span
         className={cn(
           "font-serif text-xl font-semibold tracking-[-0.035em]",
-          tone === "inverse" ? "text-primary-foreground" : "text-foreground"
+          tone === "inverse" ? "text-brand-foreground" : "text-foreground"
         )}
       >
         be

@@ -198,22 +198,22 @@ const UnAuthenticatedSidebar = () => {
       <Card>
         <CardHeader>
           <CardTitle className="text-center text-xl font-semibold">
-            Welcome to Be2gether!
+            Welcome to be2gether
           </CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-center text-muted-foreground mb-4">
-            Login to your account to connect with others.
+            Sign in to connect with people and see what they are up to.
           </p>
 
           <SignInButton mode="modal">
             <Button className="w-full" variant="outline">
-              Log In
+              Sign in
             </Button>
           </SignInButton>
 
           <SignUpButton mode="modal">
-            <Button className="w-full mt-2">Sign Up</Button>
+            <Button className="w-full mt-2">Create account</Button>
           </SignUpButton>
         </CardContent>
       </Card>

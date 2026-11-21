@@ -13,8 +13,8 @@ export default async function Home() {
   const dbUserId = await getDbUserId();
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-10 gap-5">
-      <div className="lg:col-span-6">
+    <div className="grid grid-cols-1 lg:grid-cols-10 gap-5 min-w-0">
+      <div className="lg:col-span-6 min-w-0">
         {user ? <CreatePost /> : posts.length > 0 ? <GuestPrompt /> : null}
 
         <div className="space-y-5">
@@ -28,7 +28,7 @@ export default async function Home() {
         </div>
        </div>
 
-      <div className="hidden lg:block lg:col-span-4 lg:sticky lg:top-20 lg:self-start">
+      <div className="hidden lg:block lg:col-span-4 lg:sticky lg:top-20 lg:self-start min-w-0">
        {/* {user ? <SuggestedUser /> : null} */}
        <SuggestedUser />
       </div>

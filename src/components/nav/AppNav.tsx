@@ -10,7 +10,7 @@ type AppNavProps = {
   signedIn: boolean;
   username?: string | null;
   layout: "desktop" | "sheet";
-  tone?: "default" | "on-primary";
+  tone?: "default" | "on-brand";
   onNavigate?: () => void;
 };
 
@@ -59,10 +59,10 @@ export function AppNav({ signedIn, username, layout, tone = "default", onNavigat
             onClick={onNavigate}
             className={cn(
               layout === "sheet" ? "justify-start gap-3" : "gap-2",
-              tone === "on-primary"
+              tone === "on-brand"
                 ? item.active
-                  ? "bg-primary-foreground/15 text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"
-                  : "text-primary-foreground/80 hover:bg-primary-foreground/10 hover:text-primary-foreground"
+                  ? "bg-brand-foreground/15 text-brand-foreground hover:bg-brand-foreground/20 hover:text-brand-foreground"
+                  : "text-brand-foreground/80 hover:bg-brand-foreground/10 hover:text-brand-foreground"
                 : item.active && "bg-accent text-accent-foreground"
             )}
           >

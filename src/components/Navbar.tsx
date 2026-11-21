@@ -9,7 +9,7 @@ async function Navbar(){
   const user = await currentUser();
   if(user) await syncUser(); // kind of like post request using server action to sync user with db
   return (
-    <nav className='sticky top-0 w-full bg-primary text-primary-foreground z-50'>
+    <nav className='sticky top-0 w-full bg-brand text-brand-foreground z-50'>
       <div className='max-w-6xl mx-auto px-4'>
         <div className='flex items-center justify-between h-16'>
           <div className='flex items-center'>

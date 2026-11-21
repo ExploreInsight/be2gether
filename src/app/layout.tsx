@@ -37,8 +37,8 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`${figtree.variable} ${bricolage.variable}`}>
+      <html lang="en" suppressHydrationWarning className={`${figtree.variable} ${bricolage.variable}`}>
+        <body>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -50,10 +50,10 @@ export default function RootLayout({
               <main className='py-6'>
                 <div className='max-w-6xl mx-auto px-4'>
                   <div className='grid grid-cols-1 lg:grid-cols-12 gap-5'>
-                    <div className='hidden lg:block lg:col-span-3 lg:sticky lg:top-20 lg:self-start'>
+                    <div className='hidden lg:block lg:col-span-3 lg:sticky lg:top-20 lg:self-start min-w-0'>
                       <Sidebar />
                     </div>
-                    <div className='lg:col-span-9'>
+                    <div className='lg:col-span-9 min-w-0'>
                       {children}
                     </div>
                   </div>
