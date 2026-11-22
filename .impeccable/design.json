@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T00:00:00Z",
+  "title": "Design System: be2gether",
+  "extensions": {
+    "colorMeta": {
+      "spine": { "role": "primary", "displayName": "Ultramarine Spine", "canonical": "#2a3bd6", "tonalRamp": ["#0a0f4d", "#121a84", "#1a28b0", "#2a3bd6", "#5565e6", "#8590f0", "#b9c0f7", "#e3e6fc"] },
+      "signal": { "role": "secondary", "displayName": "Signal Orange", "canonical": "#ff5a1f", "tonalRamp": ["#4d1500", "#8a2a07", "#c23f0e", "#ff5a1f", "#ff7f4d", "#ffa27d", "#ffc7ad", "#ffe9df"] },
+      "paper": { "role": "neutral", "displayName": "Cool Paper", "canonical": "#f2f4f1", "tonalRamp": ["#101214", "#2b2f2c", "#4a5057", "#7a817c", "#aab0aa", "#cfd4cd", "#e6e9e4", "#f2f4f1"] },
+      "ink": { "role": "neutral", "displayName": "Tape Ink", "canonical": "#101214", "tonalRamp": ["#000000", "#101214", "#1d2126", "#2f353b", "#4a5057", "#6f767d", "#a6acb3", "#d9dcdf"] },
+      "danger": { "role": "neutral", "displayName": "Jam Red", "canonical": "#b3261e", "tonalRamp": ["#3d0a07", "#6b1510", "#8f1e18", "#b3261e", "#d2554d", "#e68880", "#f3b9b4", "#fbe3e1"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page titles and Side A / Side B titles, uppercase." },
+      "headline": { "displayName": "Headline", "purpose": "Section and dialog titles, uppercase." },
+      "track-number": { "displayName": "Track number", "purpose": "The post's position in the day, in the accent colour." },
+      "track-age": { "displayName": "Track age", "purpose": "Age written as a duration, right-aligned in the row." },
+      "body": { "displayName": "Body", "purpose": "Post text and form text." },
+      "label": { "displayName": "Label", "purpose": "Field labels, handles, hints." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "tape-in", "value": "0.35s ease-out, translateY(6px) to 0 with fade", "purpose": "New track rows enter; disabled when Animations is off or reduced motion is set." },
+      { "name": "spin", "value": "0.8s linear infinite", "purpose": "Busy ring on a loading button." },
+      { "name": "color-fade", "value": "150ms (Tailwind transition-colors)", "purpose": "Button and rail hover fills." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Solid Button",
+      "kind": "button",
+      "refersTo": "button-solid",
+      "description": "Default action; ink fill that turns spine on hover.",
+      "html": "<button class=\"ds-btn-solid\">Post</button>",
+      "css": ".ds-btn-solid{background:var(--ink,#101214);color:var(--paper,#f2f4f1);min-height:44px;padding:0 20px;font-weight:600;border:0;border-radius:0;transition:background-color .15s,color .15s;cursor:pointer}.ds-btn-solid:hover{background:var(--spine,#2a3bd6);color:var(--on-spine,#f2f4f1)}.ds-btn-solid:focus-visible{outline:3px solid var(--ink,#101214);outline-offset:2px}"
+    },
+    {
+      "name": "Signal Button",
+      "kind": "button",
+      "refersTo": "button-signal",
+      "description": "Record a track: orange fill, ink text.",
+      "html": "<button class=\"ds-btn-signal\">Record a track</button>",
+      "css": ".ds-btn-signal{background:var(--signal,#ff5a1f);color:var(--on-signal,#101214);min-height:44px;padding:0 20px;font-weight:600;border:0;border-radius:0;cursor:pointer}.ds-btn-signal:hover{filter:brightness(.95)}.ds-btn-signal:focus-visible{outline:3px solid var(--ink,#101214);outline-offset:2px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action; 2px ink border that fills on hover.",
+      "html": "<button class=\"ds-btn-outline\">Follow</button>",
+      "css": ".ds-btn-outline{background:transparent;color:var(--ink,#101214);border:2px solid var(--ink,#101214);min-height:44px;padding:0 20px;font-weight:600;border-radius:0;transition:background-color .15s,color .15s;cursor:pointer}.ds-btn-outline:hover{background:var(--ink,#101214);color:var(--paper,#f2f4f1)}.ds-btn-outline:focus-visible{outline:3px solid var(--ink,#101214);outline-offset:2px}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "2px ink border on card fill, square.",
+      "html": "<input class=\"ds-input\" placeholder=\"Search tracks\" />",
+      "css": ".ds-input{width:100%;min-height:44px;border:2px solid var(--ink,#101214);background:var(--card,#fbfcfa);color:var(--ink,#101214);padding:10px 12px;font-size:1rem;border-radius:0}.ds-input::placeholder{color:var(--muted,#4a5057)}.ds-input:focus-visible{outline:3px solid var(--ink,#101214);outline-offset:0}"
+    },
+    {
+      "name": "Rail Item",
+      "kind": "nav",
+      "refersTo": "rail",
+      "description": "Desktop spine navigation; active item is a paper block.",
+      "html": "<nav class=\"ds-rail\"><a class=\"ds-rail-item ds-active\" href=\"#\">Feed</a><a class=\"ds-rail-item\" href=\"#\">Search</a></nav>",
+      "css": ".ds-rail{background:var(--spine,#2a3bd6);color:var(--on-spine,#f2f4f1);width:260px;padding:32px 24px;display:flex;flex-direction:column;gap:4px}.ds-rail-item{display:flex;align-items:center;min-height:48px;padding:0 12px;font-size:1.125rem;font-weight:600;color:inherit;text-decoration:none}.ds-rail-item:hover{background:rgba(242,244,241,.15)}.ds-rail-item.ds-active{background:var(--paper,#f2f4f1);color:var(--ink,#101214)}"
+    },
+    {
+      "name": "Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab-bar-item-active",
+      "description": "Phone bottom bar; active is ink, Record is signal.",
+      "html": "<nav class=\"ds-tabs\"><a class=\"ds-tab ds-on\" href=\"#\">Feed</a><a class=\"ds-tab\" href=\"#\">Search</a><a class=\"ds-tab ds-rec\" href=\"#\">Record</a><a class=\"ds-tab\" href=\"#\">Alerts</a><a class=\"ds-tab\" href=\"#\">Me</a></nav>",
+      "css": ".ds-tabs{display:flex;border-top:2px solid var(--ink,#101214);background:var(--paper,#f2f4f1);width:390px}.ds-tab{flex:1;min-height:56px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:600;color:var(--ink,#101214);text-decoration:none}.ds-tab.ds-on{background:var(--ink,#101214);color:var(--paper,#f2f4f1)}.ds-tab.ds-rec{background:var(--signal,#ff5a1f);color:var(--on-signal,#101214)}"
+    },
+    {
+      "name": "Side Tabs",
+      "kind": "nav",
+      "refersTo": "display",
+      "description": "Side A / Side B titles with a signal underline on the active side.",
+      "html": "<div class=\"ds-sides\"><button class=\"ds-side ds-on\">Side A <small>Friends</small></button><button class=\"ds-side\">Side B <small>Everyone</small></button></div>",
+      "css": ".ds-sides{display:flex;gap:24px;border-bottom:2px solid var(--ink,#101214)}.ds-side{margin-bottom:-2px;min-height:56px;background:none;border:0;border-bottom:6px solid transparent;padding:0 0 4px;font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:900;font-size:3rem;line-height:1;text-transform:uppercase;color:var(--muted,#4a5057);cursor:pointer}.ds-side small{margin-left:8px;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:.875rem;font-weight:600;text-transform:none}.ds-side:hover{color:var(--ink,#101214)}.ds-side.ds-on{border-bottom-color:var(--signal,#ff5a1f);color:var(--ink,#101214)}"
+    },
+    {
+      "name": "Track Row",
+      "kind": "card",
+      "refersTo": "track-number",
+      "description": "Signature row: number, author and text, age as a duration, hairline rule below.",
+      "html": "<article class=\"ds-track\"><div class=\"ds-num\">01</div><div><strong>Maya Rao</strong> <span class=\"ds-handle\">@maya</span><p>Walked home along the canal tonight.</p></div><div class=\"ds-age\">0:47</div></article>",
+      "css": ".ds-track{display:grid;grid-template-columns:3.25rem 1fr auto;column-gap:12px;padding:20px 0;border-bottom:1px solid rgba(16,18,20,.3);color:var(--ink,#101214)}.ds-num{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:900;font-size:2.25rem;line-height:1;color:var(--spine,#2a3bd6);font-variant-numeric:tabular-nums}.ds-handle{font-size:.875rem;color:var(--muted,#4a5057)}.ds-track p{margin:4px 0 0;line-height:1.5}.ds-age{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:800;font-size:1.5rem;line-height:1;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Unread Mark",
+      "kind": "chip",
+      "refersTo": "unread-mark",
+      "description": "Filled signal block carrying the unread count.",
+      "html": "<span class=\"ds-unread\">3</span>",
+      "css": ".ds-unread{display:inline-flex;align-items:center;justify-content:center;min-width:24px;padding:0 6px;background:var(--signal,#ff5a1f);color:var(--on-signal,#101214);font-size:.875rem;font-weight:900;font-variant-numeric:tabular-nums}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The J-Card Tracklist",
+    "overview": "be2gether is a mixtape inlay printed offset. The day's posts are tracks on a tape: numbered by position, aged as durations (0:47), split into Side A (friends) and Side B (everyone). The shell is an ultramarine spine; the content sits on a cool off-white card in near-black ink with hairline track rules. Signal orange appears only as a fill or a mark, never as text.\n\nDensity is moderate and the mood is calm and printed rather than glossy. Structure comes from ink rules and flat colour blocks, not from shadow, rounding or cards-per-post. The one display voice is a condensed heavy face used for side titles, page titles, track numbers and ages; everything else is a single humanist grotesque. Dark mode is the same card printed on black stock with a lighter spine blue. Five selectable themes (ultramarine, vermilion, moss, graphite, plum) swap only the spine and signal hues.\n\nThe build follows the intended world closely. Nothing in the shipped code claims friend or popularity counts.",
+    "keyCharacteristics": [
+      "Square corners everywhere; no radius, no shadows.",
+      "Two-weight ink rules: 2px for structure, 1px at 30% ink for track dividers.",
+      "Condensed heavy uppercase display titles; numbers in tabular figures.",
+      "Spine colour owns the shell (rail, phone top bar, avatars); signal owns fills and marks.",
+      "Colour themes change spine and signal only; paper, ink and muted never change by theme."
+    ],
+    "rules": [
+      { "name": "The Fill-Not-Type Rule", "body": "Signal orange is a fill or a mark. It never colours text or thin lines; the active-side underline is the only line and it is 6px.", "section": "colors" },
+      { "name": "The Spine Rule", "body": "The spine colour appears as the shell or as a hover fill on the solid button. Content areas stay paper, card and ink.", "section": "colors" },
+      { "name": "The Theme Swap Rule", "body": "Themes override --spine, --spine-soft and --signal and nothing else. A new surface must be built from the role tokens so a theme change needs no per-component edits.", "section": "colors" },
+      { "name": "The Display-Is-Titles Rule", "body": "The condensed face is for titles, numbers and durations. Running text, buttons, labels and inputs stay in the grotesque.", "section": "typography" },
+      { "name": "The Tabular Rule", "body": "Any number that can change (track number, age, counts, unread) uses tabular figures.", "section": "typography" },
+      { "name": "The One Axis Rule", "body": "Posts run in a single ordered list with number left and age right. No side-by-side post cards, no masonry.", "section": "layout" },
+      { "name": "The No-Shadow Rule", "body": "Separate with a rule or a colour block, never a shadow. Hover is a fill change, not a lift.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build every surface from the role tokens (paper, card, ink, muted, rule, spine, signal) so a theme or dark mode swap needs no edits.",
+      "Do write ages as durations in the display face and number posts by position in the day.",
+      "Do use 2px ink for structural borders and 1px at 30% ink for dividers between tracks.",
+      "Do keep targets at 44px or more and keep the 3px focus outline.",
+      "Do label demo content with the demo tag; show no counts that imply status.",
+      "Do honour reduced motion: with the animations setting off, nothing moves."
+    ],
+    "donts": [
+      "Don't use shadows, radii or card-per-post layouts; they are not part of this world.",
+      "Don't set text in signal orange or put it on a thin line.",
+      "Don't use the display face for body text, buttons or inputs.",
+      "Don't let a theme change anything beyond the spine and signal hues.",
+      "Don't reintroduce the old T3 Chat rose palette or the Bricolage and Figtree type."
+    ]
+  }
+}
