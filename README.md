@@ -1,104 +1,60 @@
-<h1 align='center'>🫂 be2gether - A Full Stack social media app</h1>
+# be2gether
 
-<p align="center">
-  <a href="https://be2gether-f4mx.vercel.app/" target="_blank">🌐 Live Demo</a>
-</p>
+A small daily feed for friends. Record a track (a short post, optional photo), reply, like, save, follow. Posts read as a cassette tracklist: numbered rows, ages written as durations (`0:47`), Side A for friends and Side B for everyone.
 
-**be2gether** is a modern social media platform where users can connect, share, and engage — built with **Next.js, Clerk & Prisma**, and deployed on **Vercel**.
+Built with Next.js 15, React 19, Tailwind 4, Clerk, Prisma + PostgreSQL, UploadThing and Zustand.
 
- ---
- 
-## 🚀 Features
-- 🔐 Authentication with **Clerk** (Sign up, Sign in, Manage sessions)
-- 📝 Create and delete posts
-- 📸 Image upload using **UploadThing**
-- 👤 User profiles with dynamic routes
-- ❤️ Follow/unfollow users
-- 🔔 Notifications system
-- 🌙 Light/Dark mode toggle
-- 🎨 Styled with **Tailwind CSS + shadcn/ui**
-- 🗄️ Database with **Prisma + PostgreSQL**
-
----
-
-## 📸 Screenshot
-
-### 🏠 Homepage
-![Homepage](./public/be2gether.png)
-
----
-
-## 📂 Project Structure
+## Run it
 
 ```bash
-be2gether/
-├── prisma/              # Prisma schema & migrations
-├── public/              # Static assets
-├── src/
-│   ├── actions/         # Server actions (posts, users, profiles, notifications)
-│   ├── app/             # Next.js App Router pages & API routes
-│   ├── components/      # UI & feature components
-│   ├── lib/             # Utilities (Prisma, UploadThing, helpers)
-│   └── middleware.ts    # Auth & middleware logic
-└── package.json
-```
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**:  
-  ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)  
-  ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)  
-  ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
-  ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=radix-ui&logoColor=white)
-
-- **Auth**:  
-  ![Clerk](https://img.shields.io/badge/Clerk-3C366B?style=for-the-badge&logo=clerk&logoColor=white)
-
-- **Database**:  
-  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)  
-  ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
-
-- **File Uploads**:  
-  ![UploadThing](https://img.shields.io/badge/UploadThing-FF6B6B?style=for-the-badge&logo=upload&logoColor=white)
-
-- **Deployment**:  
-  ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-
----
-
-## ⚙️ Getting Started
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/ExploreInsight/be2gether.git
-cd be2gether
-```
-
-### 2. Install dependencies
-```bash
-npm install or npm i
-```
-### 3. Set up environment variables
-Create a .env file in the root with the following:
-
-```bash
-DATABASE_URL=your_postgres_url
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-CLERK_SECRET_KEY=your_clerk_secret_key
-UPLOADTHING_TOKEN=your_uploadthing_token
-
-```
-### 4. Run Prisma migrations
-```bash
-npx prisma migrate dev
-```
-
-### 5. Start the development server
-```bash
+npm install
+cp .env.example .env   # then fill it in
+npx prisma db push     # additive: adds Bookmark, Report, isDemo columns
 npm run dev
 ```
 
-### 👨‍💻 Author
-Chirag
+### Environment
+
+| Variable | Purpose |
+| --- | --- |
+| `DATABASE_URL` | PostgreSQL connection string |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY` | Clerk auth |
+| `UPLOADTHING_TOKEN` | Photo uploads |
+| `ADMIN_EMAILS` | Comma-separated emails allowed into `/admin` |
+| `AUTO_SEED` | Set to `false` to stop demo content loading into an empty database |
+
+## Demo content
+
+When the database has no users and no posts, the first feed request seeds six demo people and twelve demo tracks, all flagged `isDemo` and badged "demo" in the UI. Remove them from `/admin`, or:
+
+```bash
+npx tsx scripts/demo.ts remove   # deletes only rows flagged isDemo
+npx tsx scripts/demo.ts seed     # adds them back
+```
+
+These use whatever `DATABASE_URL` is in your environment, so check it first.
+
+## Structure
+
+```
+src/app          routes and /api route handlers (thin)
+src/server       queries, mutations, session, seed, admin
+src/stores       one Zustand store per concern (settings, session, toast, engagement, composer)
+src/hooks        data fetching and action hooks
+src/components   ui, layout, feed, post, profile, search, alerts, settings, admin, people
+src/lib          constants, theme, api, format
+scripts          demo CLI, mock API, screenshot tool
+```
+
+## Design
+
+See `PRODUCT.md` and `DESIGN.md`. The palette is CSS variables in `src/app/globals.css`; the Settings page switches light/dark, five colour themes, density, text size, animations and like counts.
+
+## Visual checks without a database
+
+```bash
+npx tsx scripts/mock-api.ts   # synthetic API on :4010
+NEXT_PUBLIC_PREVIEW=1 NEXT_PUBLIC_API_BASE=http://localhost:4010 npm run build && NEXT_PUBLIC_PREVIEW=1 npm start
+```
+
+`NEXT_PUBLIC_PREVIEW=1` disables Clerk. Never set it in production.
