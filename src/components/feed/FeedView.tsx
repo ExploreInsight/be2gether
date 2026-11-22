@@ -38,6 +38,7 @@ export function FeedView() {
       ) : null}
       <div role="tabpanel" aria-labelledby={`tab-${side}`}>
         <TrackList
+          byDay
           items={list.items}
           status={status === "ready" ? list.status : "loading"}
           error={list.error}

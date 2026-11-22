@@ -1,18 +1,23 @@
 "use client";
 import Link from "next/link";
 import { displayName, tapeAge, trackNumber, ageLabel } from "@/lib/format";
+import { useNow } from "@/hooks/useNow";
+import { useComposer } from "@/stores/composer";
 import { useEngagement } from "@/stores/engagement";
+import { cn } from "@/lib/utils";
 import type { Track } from "@/types";
 import { TrackActions } from "./TrackActions";
 import { TrackBody } from "./TrackBody";
 
 /** One track on the tape: number, author, text, optional photo, actions, age. */
-export function TrackRow({ track, index, onRemoved }: { track: Track; index: number; onRemoved?: () => void }) {
+export function TrackRow({ track, index, onRemoved }: { track: Track; index?: number; onRemoved?: () => void }) {
   const hidden = useEngagement((s) => s.hidden[track.id]);
+  const fresh = useComposer((s) => s.lastPosted?.id === track.id);
+  const now = useNow();
   if (hidden) return null;
   return (
-    <article className="grid grid-cols-[2.5rem_1fr_auto] gap-x-3 border-b border-ink/30 py-[var(--row-pad)] animate-[tape-in_0.35s_ease-out_both] sm:grid-cols-[3.25rem_1fr_auto]">
-      <div className="font-display text-4xl font-black leading-none text-accent tnum" aria-hidden>{trackNumber(index + 1)}</div>
+    <article className={cn("grid gap-x-3 border-b-[1.5px] border-ink py-[var(--row-pad)]", index === undefined ? "grid-cols-[1fr_auto]" : "grid-cols-[2.5rem_1fr_auto] sm:grid-cols-[3.25rem_1fr_auto]", fresh && "animate-[tape-in_0.35s_ease-out_both]")}>
+      {index !== undefined && <div className="font-display text-4xl font-black leading-none text-accent tnum" aria-hidden>{trackNumber(index + 1)}</div>}
       <div className="min-w-0">
         <header className="flex flex-wrap items-baseline gap-x-2">
           <Link href={`/profile/${track.author.username}`} className="font-bold hover:underline">{displayName(track.author)}</Link>
@@ -28,8 +33,8 @@ export function TrackRow({ track, index, onRemoved }: { track: Track; index: num
         )}
         <TrackActions track={track} onRemoved={onRemoved} />
       </div>
-      <Link href={`/post/${track.id}`} className="font-display text-2xl font-extrabold leading-none text-ink tnum hover:underline" title={ageLabel(track.createdAt)} aria-label={`Posted ${ageLabel(track.createdAt)}`}>
-        {tapeAge(track.createdAt)}
+      <Link href={`/post/${track.id}`} className="w-14 text-right font-display text-2xl font-extrabold leading-none text-ink tnum hover:underline" title={ageLabel(track.createdAt)} aria-label={`Posted ${ageLabel(track.createdAt)}`}>
+        {tapeAge(track.createdAt, now)}
       </Link>
     </article>
   );

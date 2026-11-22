@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { post } from "@/lib/api";
 import { displayName, tapeAge } from "@/lib/format";
+import { useNow } from "@/hooks/useNow";
 import { useResource } from "@/hooks/useResource";
 import { useSession } from "@/stores/session";
 import { Avatar } from "@/components/ui/Avatar";
@@ -15,6 +16,7 @@ const VERB = { LIKE: "liked your track", COMMENT: "replied to your track", FOLLO
 
 export function AlertsView() {
   const me = useSession((s) => s.me);
+  const now = useNow();
   const status = useSession((s) => s.status);
   const setUnread = useSession((s) => s.setUnread);
   const { data, status: st, error, reload } = useResource<AlertItem[]>(me ? "/api/alerts" : null);
@@ -33,7 +35,7 @@ export function AlertsView() {
       {data && data.length === 0 && <EmptyState title="All quiet">When friends like or reply to your tracks, you will see it here.</EmptyState>}
       <ul>
         {data?.map((a) => (
-          <li key={a.id} className="border-b border-ink/30">
+          <li key={a.id} className="border-b border-ink">
             <Link href={a.postId ? `/post/${a.postId}` : `/profile/${a.creator.username}`} className="flex gap-3 py-4 hover:bg-hover">
               <span className="mt-2 flex w-3 shrink-0 justify-center">
                 {!a.read && <><span className="size-3 bg-signal" aria-hidden /><span className="sr-only">Unread</span></>}
@@ -43,7 +45,7 @@ export function AlertsView() {
                 <span><strong>{displayName(a.creator)}</strong> {VERB[a.type]}</span>
                 {(a.commentSnippet || a.postSnippet) && <span className="mt-1 block truncate text-muted">{a.commentSnippet ?? a.postSnippet}</span>}
               </span>
-              <span className="font-display text-xl font-extrabold tnum">{tapeAge(a.createdAt)}</span>
+              <span className="font-display text-xl font-extrabold tnum">{tapeAge(a.createdAt, now)}</span>
             </Link>
           </li>
         ))}

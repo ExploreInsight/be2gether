@@ -1,11 +1,8 @@
-/** Age written as a tape duration: 0:47 under an hour, 3h, 2d, then a date. */
+/** Age as a short, unambiguous duration: now, 12m, 3h, 2d, then a date. */
 export function tapeAge(iso: string, now = Date.now()): string {
   const secs = Math.max(0, Math.floor((now - new Date(iso).getTime()) / 1000));
-  if (secs < 3600) {
-    const m = Math.floor(secs / 60);
-    const s = secs % 60;
-    return `${m}:${String(s).padStart(2, "0")}`;
-  }
+  if (secs < 60) return "now";
+  if (secs < 3600) return `${Math.floor(secs / 60)}m`;
   const h = Math.floor(secs / 3600);
   if (h < 48) return `${h}h`;
   const d = Math.floor(h / 24);

@@ -3,11 +3,13 @@ import Link from "next/link";
 import { Trash2 } from "lucide-react";
 import { del } from "@/lib/api";
 import { ageLabel, displayName, tapeAge } from "@/lib/format";
+import { useNow } from "@/hooks/useNow";
 import { toast } from "@/stores/toast";
 import { Avatar } from "@/components/ui/Avatar";
 import type { TrackComment } from "@/types";
 
 export function CommentList({ comments, onChanged }: { comments: TrackComment[]; onChanged: () => void }) {
+  const now = useNow();
   async function remove(id: string) {
     try {
       await del(`/api/comments/${id}`);
@@ -21,12 +23,12 @@ export function CommentList({ comments, onChanged }: { comments: TrackComment[];
   return (
     <ul>
       {comments.map((c) => (
-        <li key={c.id} className="flex gap-3 border-b border-ink/30 py-4">
+        <li key={c.id} className="flex gap-3 border-b border-ink py-4">
           <Avatar user={c.author} size={36} />
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-baseline gap-x-2">
               <Link href={`/profile/${c.author.username}`} className="font-bold hover:underline">{displayName(c.author)}</Link>
-              <time dateTime={c.createdAt} title={ageLabel(c.createdAt)} className="text-sm text-muted tnum">{tapeAge(c.createdAt)}</time>
+              <time dateTime={c.createdAt} title={ageLabel(c.createdAt)} className="text-sm text-muted tnum">{tapeAge(c.createdAt, now)}</time>
             </div>
             <p className="whitespace-pre-wrap">{c.content}</p>
           </div>

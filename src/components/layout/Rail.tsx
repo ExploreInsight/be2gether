@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PenLine, ShieldCheck } from "lucide-react";
+import { PenLine, ShieldCheck, User } from "lucide-react";
 import { NAV_ITEMS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { useComposer } from "@/stores/composer";
@@ -45,7 +45,7 @@ export function Rail() {
           {me && (
             <li>
               <Link href={`/profile/${me.username}`} aria-current={path.startsWith("/profile/") ? "page" : undefined} className={cn("flex min-h-12 items-center gap-3 px-3 text-lg font-semibold", path.startsWith("/profile/") ? "bg-paper text-ink" : "hover:bg-on-spine/15")}>
-                <span aria-hidden className="grid size-5 place-items-center font-display text-lg font-black">@</span>Profile
+                <User aria-hidden className="size-5" strokeWidth={2.25} />Profile
               </Link>
             </li>
           )}

@@ -16,14 +16,14 @@ export function ProfileHeader({ profile, onSaved }: { profile: Profile; onSaved:
   const [editing, setEditing] = useState(false);
   return (
     <header className="space-y-4 border-b-2 border-ink pb-6">
-      <div className="flex items-start gap-4">
+      <div className="flex flex-wrap items-start gap-4">
         <Avatar user={profile} size={72} />
-        <div className="min-w-0 flex-1">
-          <h1 className="font-display text-5xl font-black uppercase leading-[0.9]">{displayName(profile)}</h1>
+        <div className="min-w-[10rem] flex-1">
+          <h1 className="break-words font-display text-4xl sm:text-5xl font-black uppercase leading-[0.9]">{displayName(profile)}</h1>
           <p className="text-muted">@{profile.username}{profile.isDemo && <span className="ml-2 border border-ink px-1 text-xs font-bold uppercase text-ink">demo</span>}</p>
         </div>
         {profile.isMe ? (
-          <Button size="sm" variant="outline" onClick={() => setEditing(true)}>Edit profile</Button>
+          <Button size="sm" variant="outline" className="max-sm:order-last max-sm:w-full" onClick={() => setEditing(true)}>Edit profile</Button>
         ) : (
           <FollowButton username={profile.username} initial={profile.isFollowing} />
         )}

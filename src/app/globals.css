@@ -108,7 +108,7 @@
   button, input, textarea, select { font: inherit; color: inherit; }
   button { cursor: pointer; }
   button:disabled, [aria-disabled="true"] { cursor: not-allowed; opacity: 0.5; }
-  :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 2px; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
   .on-spine :focus-visible { outline-color: var(--on-spine); }
   ::selection { background: var(--signal); color: var(--on-signal); }
   ::placeholder { color: var(--muted); opacity: 1; }
