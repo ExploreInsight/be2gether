@@ -12,7 +12,7 @@ export function ReportList({ rows, loading, onChanged }: { rows: ReportRow[] | n
   async function act(id: string, action: "dismiss" | "remove") {
     try {
       await post(`/api/admin/reports/${id}`, { action });
-      toast.ok(action === "remove" ? "Track removed." : "Report dismissed.");
+      toast.ok(action === "remove" ? "Post removed." : "Report dismissed.");
       onChanged();
     } catch (e) {
       toast.error((e as Error).message);
@@ -23,14 +23,14 @@ export function ReportList({ rows, loading, onChanged }: { rows: ReportRow[] | n
   return (
     <ul className="space-y-4">
       {rows.map((r) => (
-        <li key={r.id} className="space-y-2 border-2 border-ink p-4">
+        <li key={r.id} className="space-y-2 rounded-3xl border border-rule bg-card p-5 shadow-card">
           <p className="text-sm text-muted">Reported by @{r.reporter.username} · {tapeAge(r.createdAt)} ago</p>
           <p className="font-semibold">&ldquo;{r.reason}&rdquo;</p>
-          <p className="bg-hover p-3">
+          <p className="rounded-2xl bg-hover p-3">
             <Link href={`/post/${r.post.id}`} className="font-bold underline">{displayName(r.post.author)}</Link>: {r.post.content ?? "(photo only)"}
           </p>
           <div className="flex gap-2">
-            <Button size="sm" variant="danger" onClick={() => act(r.id, "remove")}>Remove track</Button>
+            <Button size="sm" variant="danger" onClick={() => act(r.id, "remove")}>Remove post</Button>
             <Button size="sm" variant="outline" onClick={() => act(r.id, "dismiss")}>Dismiss</Button>
           </div>
         </li>

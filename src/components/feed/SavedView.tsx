@@ -14,12 +14,12 @@ export function SavedView() {
   const list = usePagedList<Track>(me ? "/api/saved" : null);
   return (
     <div className="space-y-6">
-      <h1 className="border-b-2 border-ink pb-2 font-display text-5xl font-black uppercase leading-none">Saved</h1>
+      <h1 className="font-display text-3xl font-extrabold leading-tight">Saved</h1>
       {status === "ready" && !me ? (
-        <EmptyState title="Sign in to see saved tracks" action={<AuthButtons />}>Tracks you bookmark show up here, only for you.</EmptyState>
+        <EmptyState title="Sign in to see saved posts" action={<AuthButtons />}>Posts you bookmark show up here, only for you.</EmptyState>
       ) : (
         <TrackList {...list} status={status === "ready" ? list.status : "loading"} onMore={list.loadMore} onRetry={list.reload}
-          empty={{ title: "Nothing saved yet", text: "Tap the bookmark on any track to keep it here.", action: <Link href="/"><Button variant="outline">Back to the feed</Button></Link> }} />
+          empty={{ title: "Nothing saved yet", text: "Tap the bookmark on any post to keep it here.", action: <Link href="/"><Button variant="outline">Back to the feed</Button></Link> }} />
       )}
     </div>
   );

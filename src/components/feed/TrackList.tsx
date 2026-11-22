@@ -30,8 +30,8 @@ export function TrackList({ items, status, error, hasMore, loadingMore, onMore, 
       {byDay
         ? groupByDay(items).map((g) => (
             <section key={g.label} aria-label={g.label}>
-              <h2 className="pb-1 pt-6 font-display text-2xl font-black uppercase tracking-[0.04em]">
-                {g.label} <span className="font-sans text-sm font-semibold normal-case tracking-normal text-muted tnum">{g.items.length} {g.items.length === 1 ? "track" : "tracks"}</span>
+              <h2 className="pb-3 pt-4 font-display text-xl font-extrabold">
+                {g.label} <span className="font-sans text-sm font-semibold normal-case tracking-normal text-muted tnum">{g.items.length} {g.items.length === 1 ? "post" : "posts"}</span>
               </h2>
               {g.items.map((t, i) => <TrackRow key={t.id} track={t} index={i} />)}
             </section>
@@ -39,10 +39,10 @@ export function TrackList({ items, status, error, hasMore, loadingMore, onMore, 
         : items.map((t) => <TrackRow key={t.id} track={t} />)}
       {hasMore && (
         <div className="flex justify-center py-6">
-          <Button variant="outline" loading={loadingMore} onClick={onMore}>Play more tracks</Button>
+          <Button variant="outline" loading={loadingMore} onClick={onMore}>Show more</Button>
         </div>
       )}
-      {!hasMore && <div className="py-8 text-center"><div aria-hidden className="mx-auto mb-3 h-8 w-40 bg-[repeating-linear-gradient(90deg,var(--ink)_0_2px,transparent_2px_6px,var(--ink)_6px_7px,transparent_7px_11px)]" /><p className="font-display text-2xl font-black uppercase text-muted">End of tape</p></div>}
+      {!hasMore && <p className="py-8 text-center font-semibold text-muted">You are all caught up.</p>}
     </div>
   );
 }

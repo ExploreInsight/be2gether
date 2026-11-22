@@ -1,18 +1,14 @@
 import { cn } from "@/lib/utils";
 
-/** Cassette mark (two reels in a shell) plus the stacked condensed wordmark. */
-export function Wordmark({ className, stacked = false }: { className?: string; stacked?: boolean }) {
+/** Two overlapping speech bubbles plus a lowercase rounded wordmark. */
+export function Wordmark({ className }: { className?: string }) {
   return (
-    <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <svg viewBox="0 0 32 22" className="h-6 w-auto shrink-0" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
-        <rect x="1.5" y="1.5" width="29" height="19" rx="3" />
-        <circle cx="10.5" cy="10" r="3.4" />
-        <circle cx="21.5" cy="10" r="3.4" />
-        <path d="M8 17h16" />
+    <span className={cn("inline-flex items-center gap-2", className)}>
+      <svg viewBox="0 0 32 28" className="h-7 w-auto shrink-0" aria-hidden>
+        <path d="M4 3h14a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-6l-5 4v-4H4a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z" fill="var(--brand)" />
+        <path d="M14 11h14a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4h-1v3l-4-3h-9a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4Z" fill="var(--pop)" opacity=".95" />
       </svg>
-      <span className={cn("font-display font-black uppercase leading-[0.85] tracking-[0.01em]", stacked ? "text-5xl" : "text-3xl")}>
-        {stacked ? (<>be2<br />gether</>) : "be2gether"}
-      </span>
+      <span className="font-display text-2xl font-extrabold leading-none tracking-tight">be2gether</span>
     </span>
   );
 }

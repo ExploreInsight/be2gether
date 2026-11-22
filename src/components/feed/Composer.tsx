@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/Field";
 import type { Track } from "@/types";
 import { PhotoPicker } from "./PhotoPicker";
 
-/** "Record a track": the only element above the feed. */
+/** The only element above the feed. */
 export function Composer({ autoFocus = false }: { autoFocus?: boolean }) {
   const me = useSession((s) => s.me);
   const posted = useComposer((s) => s.posted);
@@ -27,7 +27,7 @@ export function Composer({ autoFocus = false }: { autoFocus?: boolean }) {
       posted(t);
       setText("");
       setImage(null);
-      toast.ok("Track recorded.");
+      toast.ok("Posted.");
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
@@ -38,8 +38,8 @@ export function Composer({ autoFocus = false }: { autoFocus?: boolean }) {
   if (!me) return null;
   return (
     <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); submit(); }}>
-      <label htmlFor="composer-text" className="sr-only">What happened today?</label>
-      <Textarea id="composer-text" autoFocus={autoFocus} value={text} maxLength={MAX_POST_LENGTH} placeholder="What happened today?" onChange={(e) => setText(e.target.value)} />
+      <label htmlFor="composer-text" className="sr-only">What's happening today?</label>
+      <Textarea id="composer-text" autoFocus={autoFocus} value={text} maxLength={MAX_POST_LENGTH} placeholder="What's happening today?" onChange={(e) => setText(e.target.value)} />
       <div className="flex flex-wrap items-center justify-between gap-3">
         <PhotoPicker url={image} onChange={setImage} />
         <div className="flex items-center gap-3">

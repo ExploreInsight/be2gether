@@ -37,7 +37,7 @@ export function useTrackActions(track: Track) {
     try {
       await del(`/api/posts/${track.id}`);
       useEngagement.getState().hide(track.id);
-      toast.ok("Track deleted.");
+      toast.ok("Post deleted.");
       return true;
     } catch (e) {
       toast.error((e as Error).message);

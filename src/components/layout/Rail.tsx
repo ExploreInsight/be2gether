@@ -16,27 +16,25 @@ export function isActive(path: string, href: string) {
   return href === "/" ? path === "/" : path.startsWith(href);
 }
 
-/** Desktop spine: ultramarine rail with the primary navigation. */
+const link = "flex min-h-12 items-center gap-3 rounded-full px-4 text-lg font-bold transition-colors";
+
+/** Desktop sidebar: light, with pill navigation and a New post button. */
 export function Rail() {
   const path = usePathname();
   const me = useSession((s) => s.me);
   const setOpen = useComposer((s) => s.setOpen);
+  const items = [...NAV_ITEMS] as { href: string; label: string; icon: (typeof NAV_ITEMS)[number]["icon"] }[];
   return (
-    <aside className="on-spine sticky top-0 hidden h-dvh w-[16.25rem] shrink-0 flex-col bg-spine px-6 py-8 text-on-spine lg:flex">
-      <Link href="/" aria-label="be2gether home"><Wordmark stacked /></Link>
-      <nav aria-label="Primary" className="mt-12 flex-1">
+    <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col border-r border-rule bg-card px-4 py-8 lg:flex">
+      <Link href="/" aria-label="be2gether home" className="px-3"><Wordmark /></Link>
+      <nav aria-label="Primary" className="mt-10 flex-1">
         <ul className="space-y-1">
-          {[...NAV_ITEMS, ...(me?.isAdmin ? [{ href: "/admin", label: "Admin", icon: "settings" as const }] : [])].map((item) => {
+          {items.map((item) => {
             const active = isActive(path, item.href);
             return (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  className={cn("flex min-h-12 items-center gap-3 px-3 text-lg font-semibold transition-colors", active ? "bg-paper text-ink" : "hover:bg-on-spine/15")}
-                >
-                  {item.href === "/admin" ? <ShieldCheck aria-hidden className="size-5" strokeWidth={2.25} /> : <NavIcon id={item.icon} />}
-                  {item.label}
+                <Link href={item.href} aria-current={active ? "page" : undefined} className={cn(link, active ? "bg-wash text-accent" : "hover:bg-hover")}>
+                  <NavIcon id={item.icon} />{item.label}
                   {item.href === "/notifications" && <UnreadMark />}
                 </Link>
               </li>
@@ -44,16 +42,23 @@ export function Rail() {
           })}
           {me && (
             <li>
-              <Link href={`/profile/${me.username}`} aria-current={path.startsWith("/profile/") ? "page" : undefined} className={cn("flex min-h-12 items-center gap-3 px-3 text-lg font-semibold", path.startsWith("/profile/") ? "bg-paper text-ink" : "hover:bg-on-spine/15")}>
+              <Link href={`/profile/${me.username}`} aria-current={path.startsWith("/profile/") ? "page" : undefined} className={cn(link, path.startsWith("/profile/") ? "bg-wash text-accent" : "hover:bg-hover")}>
                 <User aria-hidden className="size-5" strokeWidth={2.25} />Profile
+              </Link>
+            </li>
+          )}
+          {me?.isAdmin && (
+            <li>
+              <Link href="/admin" aria-current={path.startsWith("/admin") ? "page" : undefined} className={cn(link, path.startsWith("/admin") ? "bg-wash text-accent" : "hover:bg-hover")}>
+                <ShieldCheck aria-hidden className="size-5" strokeWidth={2.25} />Admin
               </Link>
             </li>
           )}
         </ul>
       </nav>
-      <div className="space-y-4">
-        {me && <Button variant="signal" className="w-full" onClick={() => setOpen(true)}><PenLine aria-hidden className="size-5" />Record a track</Button>}
-        <AuthButtons onSpine />
+      <div className="space-y-4 px-1">
+        {me && <Button className="w-full" onClick={() => setOpen(true)}><PenLine aria-hidden className="size-5" />New post</Button>}
+        <AuthButtons />
       </div>
     </aside>
   );

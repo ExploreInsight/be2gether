@@ -9,7 +9,7 @@ const PREVIEW = process.env.NEXT_PUBLIC_PREVIEW === "1";
 
 export const metadata: Metadata = {
   title: { default: APP_NAME, template: `%s · ${APP_NAME}` },
-  description: "A small daily feed for friends. Record a track, reply, and save what you like.",
+  description: "A small daily feed for friends. Share a post, reply, and save what you like.",
   applicationName: APP_NAME,
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
 };
@@ -18,7 +18,7 @@ export const viewport: Viewport = { width: "device-width", initialScale: 1, view
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const page = (
-    <html lang="en" data-mode="light" data-theme="ultramarine" data-density="comfortable" data-text="normal" data-motion="on" suppressHydrationWarning>
+    <html lang="en" data-mode="light" data-theme="sunrise" data-density="comfortable" data-text="normal" data-motion="on" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
       </head>

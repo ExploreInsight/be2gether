@@ -76,7 +76,7 @@ export async function getTrack(id: string, viewerId: string | null): Promise<Tra
       comments: { orderBy: { createdAt: "asc" }, include: { author: { select: userLite } } },
     },
   });
-  if (!p) throw new HttpError(404, "That track is gone.");
+  if (!p) throw new HttpError(404, "That post is gone.");
   return toDetail(p, viewerId);
 }
 
@@ -93,14 +93,14 @@ export async function createTrack(userId: string, content: string, image: string
 
 export async function deleteTrack(id: string, userId: string, isAdmin: boolean) {
   const p = await prisma.post.findUnique({ where: { id }, select: { authorId: true } });
-  if (!p) throw new HttpError(404, "That track is gone.");
+  if (!p) throw new HttpError(404, "That post is gone.");
   if (p.authorId !== userId && !isAdmin) throw new HttpError(403, "You can only delete your own posts.");
   await prisma.post.delete({ where: { id } });
 }
 
 export async function toggleLike(postId: string, userId: string) {
   const post = await prisma.post.findUnique({ where: { id: postId }, select: { authorId: true } });
-  if (!post) throw new HttpError(404, "That track is gone.");
+  if (!post) throw new HttpError(404, "That post is gone.");
   const key = { userId_postId: { userId, postId } };
   const existing = await prisma.like.findUnique({ where: key });
   if (existing) {
@@ -130,7 +130,7 @@ export async function addComment(postId: string, userId: string, content: string
   if (!text) throw new HttpError(400, "Write a reply first.");
   if (text.length > MAX_COMMENT_LENGTH) throw new HttpError(400, `Keep replies under ${MAX_COMMENT_LENGTH} characters.`);
   const post = await prisma.post.findUnique({ where: { id: postId }, select: { authorId: true } });
-  if (!post) throw new HttpError(404, "That track is gone.");
+  if (!post) throw new HttpError(404, "That post is gone.");
   await prisma.$transaction(async (tx) => {
     const c = await tx.comment.create({ data: { content: text, postId, authorId: userId } });
     if (post.authorId !== userId) {

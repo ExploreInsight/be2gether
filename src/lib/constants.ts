@@ -16,11 +16,11 @@ export const NAV_ITEMS = [
 export type NavIcon = (typeof NAV_ITEMS)[number]["icon"];
 
 export const COLOR_THEMES = [
-  { id: "ultramarine", label: "Ultramarine", spine: "#2a3bd6", signal: "#ff5a1f" },
-  { id: "vermilion", label: "Vermilion", spine: "#c2310e", signal: "#ffd23f" },
-  { id: "moss", label: "Moss", spine: "#1f6b4a", signal: "#ff8fb0" },
-  { id: "graphite", label: "Graphite", spine: "#2b2e33", signal: "#f5c400" },
-  { id: "plum", label: "Plum", spine: "#6b2d8f", signal: "#5fe0c0" },
+  { id: "sunrise", label: "Sunrise", brand: "#b83266", pop: "#ff7a6b" },
+  { id: "meadow", label: "Meadow", brand: "#1f7a4d", pop: "#ffb84d" },
+  { id: "lagoon", label: "Lagoon", brand: "#0f6e8c", pop: "#ff8a65" },
+  { id: "grape", label: "Grape", brand: "#6a3fc4", pop: "#ff8fb8" },
+  { id: "honey", label: "Honey", brand: "#a85a00", pop: "#ffc933" },
 ] as const;
 
 export type ThemeId = (typeof COLOR_THEMES)[number]["id"];

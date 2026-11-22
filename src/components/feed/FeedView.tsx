@@ -29,10 +29,10 @@ export function FeedView() {
       <h1 className="sr-only">Feed</h1>
       <SideTabs side={side} onChange={setPicked} />
       {me ? (
-        <section aria-label="Record a track" className="hidden lg:block"><Composer /></section>
+        <section aria-label="New post" className="hidden rounded-3xl border border-rule bg-card p-5 shadow-card lg:block"><Composer /></section>
       ) : status === "ready" ? (
-        <div className="flex flex-wrap items-center justify-between gap-3 border-2 border-ink p-4">
-          <p className="font-semibold">Sign in to follow friends and record your own tracks.</p>
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-rule bg-card p-5 shadow-card">
+          <p className="font-semibold">Sign in to follow friends and share your own posts.</p>
           <AuthButtons />
         </div>
       ) : null}
@@ -48,8 +48,8 @@ export function FeedView() {
           onRetry={list.reload}
           empty={
             side === "friends"
-              ? { title: "Side A is quiet", text: "Follow a few people and their tracks land here, newest first.", action: <Button variant="outline" onClick={() => setPicked("everyone")}>Play Side B</Button> }
-              : { title: "Nothing recorded yet", text: "Be the first to record a track today." }
+              ? { title: "Your friends feed is quiet", text: "Follow a few people and their posts show up here, newest first.", action: <Button variant="outline" onClick={() => setPicked("everyone")}>See everyone</Button> }
+              : { title: "Nothing shared yet", text: "Be the first to share something today." }
           }
         />
       </div>

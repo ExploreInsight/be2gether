@@ -10,7 +10,7 @@ var r=document.documentElement;
 var m=s.mode||"system";
 var dark=m==="dark"||(m==="system"&&matchMedia("(prefers-color-scheme: dark)").matches);
 r.dataset.mode=dark?"dark":"light";
-r.dataset.theme=s.theme||"ultramarine";
+r.dataset.theme=s.theme||"sunrise";
 r.dataset.density=s.density||"comfortable";
 r.dataset.text=s.largeText?"large":"normal";
 var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;

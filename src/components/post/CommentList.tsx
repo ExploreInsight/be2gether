@@ -23,7 +23,7 @@ export function CommentList({ comments, onChanged }: { comments: TrackComment[];
   return (
     <ul>
       {comments.map((c) => (
-        <li key={c.id} className="flex gap-3 border-b border-ink py-4">
+        <li key={c.id} className="flex gap-3 border-b border-rule py-4">
           <Avatar user={c.author} size={36} />
           <div className="min-w-0 flex-1">
             <div className="flex flex-wrap items-baseline gap-x-2">

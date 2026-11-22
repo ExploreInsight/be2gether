@@ -2,7 +2,7 @@ import { forwardRef, useId, type InputHTMLAttributes, type TextareaHTMLAttribute
 import { cn } from "@/lib/utils";
 
 const BASE =
-  "w-full border-2 border-ink bg-card px-3 py-2.5 text-base text-ink placeholder:text-muted focus-visible:outline-offset-0 disabled:opacity-50 aria-[invalid=true]:border-danger";
+  "w-full rounded-2xl border border-line bg-card px-4 py-2.5 text-base text-ink placeholder:text-muted focus-visible:outline-offset-0 disabled:opacity-50 aria-[invalid=true]:border-danger";
 
 export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
   function Input({ className, ...rest }, ref) {

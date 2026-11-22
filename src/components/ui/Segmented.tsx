@@ -12,10 +12,10 @@ export function Segmented<T extends string>({
   const name = useId();
   return (
     <fieldset className="min-w-0">
-      <legend className="mb-2 font-semibold">{label}</legend>
-      <div className="flex border-2 border-ink">
+      <legend className="mb-2 font-bold">{label}</legend>
+      <div className="flex gap-1 rounded-full border border-line bg-card p-1">
         {options.map((o) => (
-          <label key={o.value} className={cn("relative flex min-h-11 flex-1 cursor-pointer items-center justify-center px-3 text-center text-sm font-semibold has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:-outline-offset-4 has-[:focus-visible]:outline-signal", value === o.value ? "bg-ink text-paper" : "hover:bg-hover")}>
+          <label key={o.value} className={cn("relative flex min-h-10 flex-1 cursor-pointer items-center justify-center rounded-full px-3 text-center text-sm font-bold has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand", value === o.value ? "bg-brand text-on-brand" : "hover:bg-hover")}>
             <input type="radio" name={name} value={o.value} checked={value === o.value} onChange={() => onChange(o.value)} className="sr-only" />
             {o.label}
           </label>

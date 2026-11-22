@@ -30,10 +30,10 @@ export function PhotoPicker({ url, onChange }: { url: string | null; onChange: (
         <ImagePlus aria-hidden className="size-5" />Photo
       </Button>
       {url && (
-        <span className="relative inline-block border-2 border-ink">
+        <span className="relative inline-block rounded-xl border border-rule">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={url} alt="Selected photo" className="size-14 object-cover" />
-          <button type="button" aria-label="Remove photo" onClick={() => onChange(null)} className="absolute -right-3 -top-3 inline-flex size-8 items-center justify-center border-2 border-ink bg-paper">
+          <img src={url} alt="Selected photo" className="size-14 rounded-xl object-cover" />
+          <button type="button" aria-label="Remove photo" onClick={() => onChange(null)} className="absolute -right-3 -top-3 inline-flex size-8 items-center justify-center rounded-full border border-rule bg-card">
             <X aria-hidden className="size-4" />
           </button>
         </span>

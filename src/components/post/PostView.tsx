@@ -22,10 +22,10 @@ export function PostView({ params }: { params: Promise<{ id: string }> }) {
       {status === "error" && <ErrorState message={error} onRetry={reload} />}
       {data && (
         <>
-          <h1 className="sr-only">Track by {data.author.username}</h1>
+          <h1 className="sr-only">Post by {data.author.username}</h1>
           <TrackRow track={data} onRemoved={() => router.push("/")} />
           <section aria-labelledby="replies" className="space-y-4">
-            <h2 id="replies" className="font-display text-3xl font-black uppercase leading-none">Replies <span className="tnum">{data.comments.length}</span></h2>
+            <h2 id="replies" className="font-display text-xl font-extrabold leading-tight">Replies <span className="tnum">{data.comments.length}</span></h2>
             <CommentForm postId={data.id} onAdded={reload} />
             <CommentList comments={data.comments} onChanged={reload} />
           </section>

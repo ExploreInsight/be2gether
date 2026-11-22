@@ -16,7 +16,7 @@ export type SettingsState = {
 
 const DEFAULTS = {
   mode: "system" as ModeId,
-  theme: "ultramarine" as ThemeId,
+  theme: "sunrise" as ThemeId,
   density: "comfortable" as DensityId,
   largeText: false,
   animations: true,

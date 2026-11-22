@@ -11,7 +11,7 @@ export function Toaster() {
         <button
           key={t.id}
           onClick={() => dismiss(t.id)}
-          className={cn("pointer-events-auto max-w-md border-2 border-ink px-4 py-3 text-left text-sm font-semibold", t.kind === "error" ? "bg-danger text-paper" : "bg-ink text-paper")}
+          className={cn("pointer-events-auto max-w-md rounded-full px-5 py-3 text-left text-sm font-bold shadow-card", t.kind === "error" ? "bg-danger text-paper" : "bg-ink text-paper")}
         >
           {t.text}
         </button>

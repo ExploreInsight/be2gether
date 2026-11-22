@@ -7,7 +7,7 @@ export function ComposerDialog() {
   const open = useComposer((s) => s.open);
   const setOpen = useComposer((s) => s.setOpen);
   return (
-    <Dialog open={open} onOpenChange={setOpen} title="Record a track">
+    <Dialog open={open} onOpenChange={setOpen} title="New post">
       <Composer autoFocus />
     </Dialog>
   );

@@ -6,8 +6,8 @@ import { useSettings } from "@/stores/settings";
 import { ThemePicker } from "./ThemePicker";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section className="space-y-4 border-b border-ink/30 pb-8">
-    <h2 className="font-display text-3xl font-black uppercase leading-none">{title}</h2>
+  <section className="space-y-4 rounded-3xl border border-rule bg-card p-5 shadow-card">
+    <h2 className="font-display text-xl font-extrabold leading-tight">{title}</h2>
     {children}
   </section>
 );
@@ -22,7 +22,7 @@ export function SettingsView() {
   const reset = useSettings((s) => s.reset);
   return (
     <div className="space-y-8">
-      <h1 className="border-b-2 border-ink pb-2 font-display text-5xl font-black uppercase leading-none">Settings</h1>
+      <h1 className="font-display text-3xl font-extrabold leading-tight">Settings</h1>
       <p className="text-muted">Saved on this device only.</p>
       <Section title="Colour">
         <Segmented label="Light or dark" value={mode} onChange={(v) => set("mode", v)} options={[{ value: "system", label: "Match device" }, { value: "light", label: "Light" }, { value: "dark", label: "Dark" }]} />

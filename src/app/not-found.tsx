@@ -4,8 +4,8 @@ import { EmptyState } from "@/components/ui/State";
 
 export default function NotFound() {
   return (
-    <EmptyState title="Track not found" action={<Link href="/"><Button>Back to the feed</Button></Link>}>
-      That page is not on this tape. It may have been deleted, or the link has a typo.
+    <EmptyState title="Post not found" action={<Link href="/"><Button>Back to the feed</Button></Link>}>
+      We could not find that page. It may have been deleted, or the link has a typo.
     </EmptyState>
   );
 }

@@ -12,7 +12,7 @@ import { TrackSkeleton } from "@/components/ui/Skeleton";
 import { AuthButtons } from "@/components/layout/AuthButtons";
 import type { AlertItem } from "@/types";
 
-const VERB = { LIKE: "liked your track", COMMENT: "replied to your track", FOLLOW: "started following you" } as const;
+const VERB = { LIKE: "liked your post", COMMENT: "replied to your post", FOLLOW: "started following you" } as const;
 
 export function AlertsView() {
   const me = useSession((s) => s.me);
@@ -28,17 +28,17 @@ export function AlertsView() {
 
   return (
     <div className="space-y-6">
-      <h1 className="border-b-2 border-ink pb-2 font-display text-5xl font-black uppercase leading-none">Alerts</h1>
+      <h1 className="font-display text-3xl font-extrabold leading-tight">Alerts</h1>
       {status === "ready" && !me && <EmptyState title="Sign in to see alerts" action={<AuthButtons />}>Likes, replies and new followers show up here.</EmptyState>}
       {me && st === "loading" && <TrackSkeleton />}
       {me && st === "error" && <ErrorState message={error} onRetry={reload} />}
-      {data && data.length === 0 && <EmptyState title="All quiet">When friends like or reply to your tracks, you will see it here.</EmptyState>}
+      {data && data.length === 0 && <EmptyState title="All quiet">When friends like or reply to your posts, you will see it here.</EmptyState>}
       <ul>
         {data?.map((a) => (
-          <li key={a.id} className="border-b border-ink">
+          <li key={a.id} className="border-b border-rule">
             <Link href={a.postId ? `/post/${a.postId}` : `/profile/${a.creator.username}`} className="flex gap-3 py-4 hover:bg-hover">
               <span className="mt-2 flex w-3 shrink-0 justify-center">
-                {!a.read && <><span className="size-3 bg-signal" aria-hidden /><span className="sr-only">Unread</span></>}
+                {!a.read && <><span className="size-3 bg-pop" aria-hidden /><span className="sr-only">Unread</span></>}
               </span>
               <Avatar user={a.creator} size={40} />
               <span className="min-w-0 flex-1">
