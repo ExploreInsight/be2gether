@@ -1,6 +1,15 @@
 # be2gether
 
-A friendly daily feed for friends. Share a post (text and an optional photo), reply, like, save and follow. Friends and Everyone tabs, a warm and soft look, and a Settings page for colour themes, animations and reading comfort.
+A friendly daily feed for friends. Share a post (text and an optional photo), reply, like, save, share a link and follow. Friends and Everyone tabs, a warm and soft look, and a Settings page for colour themes, animations and reading comfort.
+
+![be2gether home on desktop](docs/screenshots/home-desktop.png)
+
+<p>
+  <img src="docs/screenshots/home-phone.png" alt="Home on a phone" width="260">
+  <img src="docs/screenshots/home-phone-dark.png" alt="Home on a phone, dark mode with the Grape theme" width="260">
+</p>
+
+_Screenshots use synthetic demo content from `scripts/mock-api.ts`, not real people or posts._
 
 Built with Next.js 15, React 19, Tailwind 4, Clerk, Prisma + PostgreSQL, UploadThing and Zustand.
 

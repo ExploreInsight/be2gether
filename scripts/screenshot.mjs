@@ -52,7 +52,7 @@ for (const p of paths.length ? paths : ["/"]) {
     await sleep(600);
     const m = await evalJs(`({scrollWidth:document.documentElement.scrollWidth,innerWidth:innerWidth,bodyScrollWidth:document.body.scrollWidth,height:document.documentElement.scrollHeight})`);
     const lm = await send("Page.getLayoutMetrics");
-    const h = Math.min(Math.ceil(lm.result.cssContentSize.height), 6000);
+    const h = process.env.VIEWPORT_ONLY ? v.height : Math.min(Math.ceil(lm.result.cssContentSize.height), 6000);
     const shot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: { x: 0, y: 0, width: v.width, height: h, scale: 1 } });
     const name = `${(p.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "home")}-${v.name}${process.env.TAG ? "-" + process.env.TAG : ""}.png`;
     writeFileSync(`${out}/${name}`, Buffer.from(shot.result.data, "base64"));
