@@ -1,80 +1,32 @@
-import { type Metadata } from 'next'
-import { ClerkProvider } from '@clerk/nextjs'
-import { Bricolage_Grotesque, Figtree } from 'next/font/google'
-import './globals.css'
-import { ThemeProvider } from '@/components/theme-provider'
-import Navbar from '@/components/Navbar'
-import Sidebar from '@/components/Sidebar'
-import { Toaster } from 'react-hot-toast'
+import type { Metadata, Viewport } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
+import "./globals.css";
+import { AppShell } from "@/components/layout/AppShell";
+import { APP_NAME } from "@/lib/constants";
+import { THEME_BOOT_SCRIPT } from "@/lib/theme";
 
-
-const figtree = Figtree({
-  variable: '--font-figtree',
-  subsets: ['latin'],
-})
-
-const bricolage = Bricolage_Grotesque({
-  variable: '--font-bricolage',
-  subsets: ['latin'],
-})
+const PREVIEW = process.env.NEXT_PUBLIC_PREVIEW === "1";
 
 export const metadata: Metadata = {
-  title: 'be2gether',
-  description: 'A social media platform for everyone',
-  applicationName: 'be2gether',
-  icons: { icon: '/icon.svg', apple: '/icon.svg' },
-  openGraph: {
-    title: 'be2gether',
-    description: 'A social media platform for everyone',
-    type: 'website',
-  },
-}
+  title: { default: APP_NAME, template: `%s · ${APP_NAME}` },
+  description: "A small daily feed for friends. Record a track, reply, and save what you like.",
+  applicationName: APP_NAME,
+  icons: { icon: "/icon.svg", apple: "/icon.svg" },
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  return (
-    <ClerkProvider>
-      <html lang="en" suppressHydrationWarning className={`${figtree.variable} ${bricolage.variable}`}>
-        <body>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <div className='min-h-screen'>
-              <Navbar />
-              <main className='py-6'>
-                <div className='max-w-7xl mx-auto px-4'>
-                  <div className='grid grid-cols-1 lg:grid-cols-12 gap-5'>
-                    <div className='hidden lg:block lg:col-span-3 lg:sticky lg:top-20 lg:self-start min-w-0'>
-                      <Sidebar />
-                    </div>
-                    <div className='lg:col-span-9 min-w-0'>
-                      {children}
-                    </div>
-                  </div>
-                </div>
+export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
 
-              </main>
-
-            </div>
-            <Toaster
-              toastOptions={{
-                style: {
-                  background: "var(--card)",
-                  color: "var(--card-foreground)",
-                  border: "1px solid var(--border)",
-                  borderRadius: "var(--radius)",
-                },
-              }}
-            />
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
-  )
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const page = (
+    <html lang="en" data-mode="light" data-theme="ultramarine" data-density="comfortable" data-text="normal" data-motion="on" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
+      </head>
+      <body>
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[70] focus:bg-ink focus:px-4 focus:py-3 focus:text-paper">Skip to content</a>
+        <AppShell>{children}</AppShell>
+      </body>
+    </html>
+  );
+  return PREVIEW ? page : <ClerkProvider>{page}</ClerkProvider>;
 }

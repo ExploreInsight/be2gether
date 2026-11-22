@@ -1,0 +1,21 @@
+import { initials } from "@/lib/format";
+import { cn } from "@/lib/utils";
+import type { UserLite } from "@/types";
+
+/** Square tape-label avatar. Photos are user-supplied; fallback is initials. */
+export function Avatar({ user, size = 40, className }: { user: Pick<UserLite, "name" | "username" | "image">; size?: number; className?: string }) {
+  return (
+    <span
+      className={cn("relative inline-flex shrink-0 items-center justify-center overflow-hidden bg-spine font-display text-on-spine font-black", className)}
+      style={{ width: size, height: size, fontSize: size * 0.45 }}
+      aria-hidden
+    >
+      {user.image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={user.image} alt="" width={size} height={size} className="size-full object-cover" loading="lazy" />
+      ) : (
+        initials(user.name, user.username)
+      )}
+    </span>
+  );
+}
