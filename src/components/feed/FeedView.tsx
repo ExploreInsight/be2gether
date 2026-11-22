@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { AuthButtons } from "@/components/layout/AuthButtons";
 import type { Side, Track } from "@/types";
 import { Composer } from "./Composer";
+import { Greeting } from "./Greeting";
 import { SideTabs } from "./SideTabs";
 import { TrackList } from "./TrackList";
 
@@ -26,7 +27,7 @@ export function FeedView() {
 
   return (
     <div className="space-y-6">
-      <h1 className="sr-only">Feed</h1>
+      <Greeting />
       <SideTabs side={side} onChange={setPicked} />
       {me ? (
         <section aria-label="New post" className="hidden rounded-3xl border border-rule bg-card p-5 shadow-card lg:block"><Composer /></section>

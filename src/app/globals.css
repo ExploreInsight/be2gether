@@ -92,7 +92,7 @@
 [data-theme="meadow"]   { --brand: #1f7a4d; --brand-soft: #1f7a4d; --pop: #ffb84d; --wash: #dff3e7; }
 [data-theme="lagoon"]   { --brand: #0f6e8c; --brand-soft: #0f6e8c; --pop: #ff8a65; --wash: #dcf0f6; }
 [data-theme="grape"]    { --brand: #6a3fc4; --brand-soft: #6a3fc4; --pop: #ff8fb8; --wash: #ece4fb; }
-[data-theme="honey"]    { --brand: #a85a00; --brand-soft: #a85a00; --pop: #ffc933; --wash: #fdebd0; }
+[data-theme="honey"]    { --brand: #9a5200; --brand-soft: #9a5200; --pop: #ffc933; --wash: #fdebd0; }
 [data-mode="dark"][data-theme="sunrise"] { --brand-soft: #ff9ec0; --wash: #43283a; }
 [data-mode="dark"][data-theme="meadow"]  { --brand-soft: #7fd6a8; --wash: #20342a; }
 [data-mode="dark"][data-theme="lagoon"]  { --brand-soft: #7fd0ea; --wash: #1c3340; }
@@ -116,7 +116,7 @@
   button, input, textarea, select { font: inherit; color: inherit; }
   button { cursor: pointer; }
   button:disabled, [aria-disabled="true"] { cursor: not-allowed; }
-  :focus-visible { outline: 3px solid var(--brand-soft); outline-offset: 2px; border-radius: 12px; }
+  :focus-visible { outline: 3px solid var(--brand-soft); outline-offset: 2px; border-radius: 16px; }
   ::selection { background: var(--wash); color: var(--ink); }
   ::placeholder { color: var(--muted); opacity: 1; }
   input, textarea { caret-color: var(--brand-soft); }

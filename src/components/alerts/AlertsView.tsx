@@ -38,7 +38,7 @@ export function AlertsView() {
           <li key={a.id} className="border-b border-rule">
             <Link href={a.postId ? `/post/${a.postId}` : `/profile/${a.creator.username}`} className="flex gap-3 py-4 hover:bg-hover">
               <span className="mt-2 flex w-3 shrink-0 justify-center">
-                {!a.read && <><span className="size-3 bg-pop" aria-hidden /><span className="sr-only">Unread</span></>}
+                {!a.read && <><span className="size-3 rounded-full bg-brand" aria-hidden /><span className="sr-only">Unread</span></>}
               </span>
               <Avatar user={a.creator} size={40} />
               <span className="min-w-0 flex-1">

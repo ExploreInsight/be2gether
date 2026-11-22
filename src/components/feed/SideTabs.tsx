@@ -10,7 +10,7 @@ const SIDES: ReadonlyArray<{ id: Side; label: string }> = [
 /** Two real tabs as pills. Arrow keys move between them. */
 export function SideTabs({ side, onChange }: { side: Side; onChange: (s: Side) => void }) {
   return (
-    <div role="tablist" aria-label="Feed" className="flex gap-1 rounded-full border border-line bg-card p-1">
+    <div role="tablist" aria-label="Feed" className="flex gap-1 rounded-full bg-hover p-1">
       {SIDES.map((s) => {
         const on = side === s.id;
         return (

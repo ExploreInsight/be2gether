@@ -21,11 +21,11 @@ export function SettingsView() {
   const set = useSettings((s) => s.set);
   const reset = useSettings((s) => s.reset);
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <h1 className="font-display text-3xl font-extrabold leading-tight">Settings</h1>
       <p className="text-muted">Saved on this device only.</p>
       <Section title="Colour">
-        <Segmented label="Light or dark" value={mode} onChange={(v) => set("mode", v)} options={[{ value: "system", label: "Match device" }, { value: "light", label: "Light" }, { value: "dark", label: "Dark" }]} />
+        <Segmented label="Light or dark" value={mode} onChange={(v) => set("mode", v)} options={[{ value: "system", label: "Auto" }, { value: "light", label: "Light" }, { value: "dark", label: "Dark" }]} />
         <ThemePicker />
       </Section>
       <Section title="Motion">

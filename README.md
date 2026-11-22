@@ -1,6 +1,6 @@
 # be2gether
 
-A small daily feed for friends. Record a track (a short post, optional photo), reply, like, save, follow. Posts read as a cassette tracklist: numbered rows, ages written as durations (`0:47`), Side A for friends and Side B for everyone.
+A friendly daily feed for friends. Share a post (text and an optional photo), reply, like, save and follow. Friends and Everyone tabs, a warm and soft look, and a Settings page for colour themes, animations and reading comfort.
 
 Built with Next.js 15, React 19, Tailwind 4, Clerk, Prisma + PostgreSQL, UploadThing and Zustand.
 
@@ -25,7 +25,7 @@ npm run dev
 
 ## Demo content
 
-When the database has no users and no posts, the first feed request seeds six demo people and twelve demo tracks, all flagged `isDemo` and badged "demo" in the UI. Remove them from `/admin`, or:
+When the database has no users and no posts, the first feed request seeds six demo people and twelve demo posts, all flagged `isDemo` and badged "demo" in the UI. Remove them from `/admin`, or:
 
 ```bash
 npx tsx scripts/demo.ts remove   # deletes only rows flagged isDemo

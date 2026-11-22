@@ -12,7 +12,7 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaHTMLAttributes<HTMLTextAreaElement>>(
   function Textarea({ className, ...rest }, ref) {
-    return <textarea ref={ref} className={cn(BASE, "min-h-24 resize-y", className)} {...rest} />;
+    return <textarea ref={ref} className={cn(BASE, "min-h-24 resize-none rounded-3xl", className)} {...rest} />;
   },
 );
 

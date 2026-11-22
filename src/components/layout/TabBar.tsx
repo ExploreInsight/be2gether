@@ -39,7 +39,7 @@ export function TabBar() {
       </div>
       <Link href="/notifications" aria-current={alertsActive ? "page" : undefined} className={cn(tab, alertsActive ? "text-accent" : "text-muted")}>
         <NavIcon id="alerts" />Alerts
-        {unread > 0 && <span className="absolute right-[28%] top-2 size-2.5 rounded-full bg-pop" aria-hidden />}
+        {unread > 0 && <span className="absolute right-[28%] top-2 size-2.5 rounded-full bg-brand ring-2 ring-card" aria-hidden />}
         {unread > 0 && <span className="sr-only">{unread} unread</span>}
       </Link>
       {item(profileHref, me ? "Me" : "Settings", me ? <User aria-hidden className="size-5" strokeWidth={2.25} /> : <NavIcon id="settings" />)}

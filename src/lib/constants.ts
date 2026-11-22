@@ -20,7 +20,7 @@ export const COLOR_THEMES = [
   { id: "meadow", label: "Meadow", brand: "#1f7a4d", pop: "#ffb84d" },
   { id: "lagoon", label: "Lagoon", brand: "#0f6e8c", pop: "#ff8a65" },
   { id: "grape", label: "Grape", brand: "#6a3fc4", pop: "#ff8fb8" },
-  { id: "honey", label: "Honey", brand: "#a85a00", pop: "#ffc933" },
+  { id: "honey", label: "Honey", brand: "#9a5200", pop: "#ffc933" },
 ] as const;
 
 export type ThemeId = (typeof COLOR_THEMES)[number]["id"];

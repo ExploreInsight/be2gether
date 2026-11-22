@@ -11,7 +11,7 @@ const users = DEMO_USERS.map((u, i) => ({ id: `u${i}`, name: u.name, username: u
 const byName = Object.fromEntries(users.map((u) => [u.username, u]));
 const lite = (u: (typeof users)[number]) => ({ id: u.id, name: u.name, username: u.username, image: u.image });
 const now = Date.now();
-const PHOTO = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='640' height='400'><rect width='640' height='400' fill='#2a3bd6'/><circle cx='200' cy='200' r='90' fill='none' stroke='#f2f4f1' stroke-width='14'/><circle cx='440' cy='200' r='90' fill='none' stroke='#f2f4f1' stroke-width='14'/><text x='320' y='360' text-anchor='middle' font-size='28' fill='#f2f4f1' font-family='sans-serif'>synthetic demo image</text></svg>`);
+const PHOTO = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='640' height='400'><rect width='640' height='400' fill='#fbd5df'/><circle cx='200' cy='200' r='90' fill='none' stroke='#b83266' stroke-width='14'/><circle cx='440' cy='200' r='90' fill='none' stroke='#b83266' stroke-width='14'/><text x='320' y='360' text-anchor='middle' font-size='28' fill='#2b2330' font-family='sans-serif'>synthetic demo image</text></svg>`);
 
 const tracks = [
   ...DEMO_POSTS.map(([who, content, mins], i) => ({
