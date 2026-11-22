@@ -7,6 +7,7 @@ import { useSettings } from "@/stores/settings";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { useTrackActions } from "@/hooks/useTrackActions";
 import type { Track } from "@/types";
+import { ShareButton } from "./ShareButton";
 import { TrackMenu } from "./TrackMenu";
 
 const btn = "inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-full px-3 text-sm font-bold text-muted hover:bg-hover hover:text-ink";
@@ -33,6 +34,7 @@ export function TrackActions({ track, onRemoved }: { track: Track; onRemoved?: (
       <button type="button" className={btn} aria-pressed={saved} aria-label={saved ? "Remove from saved" : "Save"} onClick={() => guard(save)}>
         <Bookmark aria-hidden className={cn("size-5", saved && "fill-brand stroke-brand")} strokeWidth={2.25} />
       </button>
+      <ShareButton path={`/post/${track.id}`} title={`${track.author.name ?? track.author.username} on be2gether`} text={track.content?.slice(0, 120) ?? undefined} label="Share post" />
       <TrackMenu track={track} onRemoved={onRemoved} />
     </div>
   );

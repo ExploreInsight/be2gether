@@ -6,6 +6,7 @@ import { Avatar } from "@/components/ui/Avatar";
 import { Button } from "@/components/ui/Button";
 import { FollowButton } from "@/components/people/FollowButton";
 import type { Profile } from "@/types";
+import { ShareButton } from "@/components/feed/ShareButton";
 import { EditProfileDialog } from "./EditProfileDialog";
 
 const Stat = ({ n, label }: { n: number; label: string }) => (
@@ -29,6 +30,7 @@ export function ProfileHeader({ profile, onSaved }: { profile: Profile; onSaved:
         )}
       </div>
       {profile.bio && <p className="text-lg">{profile.bio}</p>}
+      <ShareButton path={`/profile/${profile.username}`} title={`${displayName(profile)} on be2gether`} text={profile.bio ?? undefined} label="Share profile" withText className="-ml-3" />
       <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
         {profile.location && <li className="flex items-center gap-1.5"><MapPin aria-hidden className="size-4" />{profile.location}</li>}
         {profile.website && <li className="flex items-center gap-1.5"><Link2 aria-hidden className="size-4" /><a href={profile.website} rel="noopener noreferrer nofollow" target="_blank" className="text-accent underline">{profile.website.replace(/^https?:\/\//, "")}</a></li>}
